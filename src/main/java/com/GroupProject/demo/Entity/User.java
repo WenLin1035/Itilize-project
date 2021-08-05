@@ -3,10 +3,7 @@ package com.GroupProject.demo.Entity;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /*
@@ -14,16 +11,30 @@ import java.math.BigDecimal;
  */
 
 @Entity
+@Table(name="user")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer id;
-    private String username;
-    private String password;
-    private String name;
-    public User(){
 
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
+    private String password;
+
+    @Column(name="name")
+    private String name;
+
+    public User(){}
+
+    public User(String user, String pass, String name){
+        username = user;
+        password = pass;
+        this.name = name;
     }
+
     public Integer getId(){
         return id;
     }
