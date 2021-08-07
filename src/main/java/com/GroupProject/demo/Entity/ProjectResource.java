@@ -10,13 +10,22 @@ import javax.persistence.*;
 public class ProjectResource {
     @Id
     @GeneratedValue
-    @Column(name="pr_id",nullable = false,unique = true)
+    @Column(name="id",nullable = false,unique = true)
+    private Integer id;
+    @ManyToOne(cascade = CascadeType.MERGE,targetEntity = Project.class)
     private Integer pr_id;
-    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="project_id")
-    private Project pid;
+    private Integer pid;
     @JoinColumn(name="rid")
     private Integer rid;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getPr_id() {
         return pr_id;
@@ -26,11 +35,11 @@ public class ProjectResource {
         this.pr_id = pr_id;
     }
 
-    public Project getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(Project pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 

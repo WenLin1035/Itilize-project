@@ -7,6 +7,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -21,7 +23,7 @@ public class Project {
     @Column(name="project_id")
     private Integer id;
 
-    @Column(name="Project_name",nullable = false,unique = true)
+    @Column(name="project_name",nullable = false,unique = true)
     private String name;
 
     @CreatedDate
@@ -32,7 +34,7 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    @ManyToOne(targetEntity = User.class, cascade = {CascadeType.DETACH})
+    //@ManyToOne(cascade = {CascadeType.DETACH})
     @JoinColumn(name="user_id")
     private Integer user_id;
 
@@ -41,17 +43,19 @@ public class Project {
 
     @OneToMany(targetEntity = ProjectResource.class,cascade = CascadeType.REMOVE,mappedBy = "project")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<ProjectResource> resources;
+    private List<ProjectResource> resources;
 
     public Project(){}
 
-    public Project(Integer pid, String name, Integer uid, Integer pr_id){
-        id = pid;
-        this.name = name;
-        this.createtime = LocalDate.now();
-        this.updatetime = LocalDate.now();
-        user_id = uid;
-        this.pr_id = pr_id;
+    public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
+        this.resources = projectCollection;
+    }
+
+    public void add(ProjectResource temp){
+        if(resources == null){
+            resources = new ArrayList<ProjectResource>();
+        }
+        resources.add(temp);
     }
 
     public Integer getId(){

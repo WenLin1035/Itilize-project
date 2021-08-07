@@ -14,14 +14,15 @@ public class Columns {
     @GeneratedValue
     @Column(name="columnid")
     private Integer columnid;
+    @Column(name="columnName")
     private String columnName;
     @Enumerated(EnumType.STRING)
     private ColumnType columnType;
     @CreatedDate
-    private LocalDate createdata;
+    private LocalDate createdate;
     @LastModifiedDate
     private LocalDate lastupdate;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Resource.class)
     @JoinColumn(name="rid")
     private Resource resource;
 
@@ -50,11 +51,11 @@ public class Columns {
     }
 
     public LocalDate getCreatedata() {
-        return createdata;
+        return createdate;
     }
 
     public void setCreatedata(LocalDate createdata) {
-        this.createdata = createdata;
+        this.createdate = createdata;
     }
 
     public LocalDate getLastupdate() {

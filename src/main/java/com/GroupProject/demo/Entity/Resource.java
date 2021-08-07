@@ -29,6 +29,12 @@ public class Resource {
     @Column(name="rcode")
     private Integer rcode;
 
+    @Column(name="pr_id")
+    private Integer pr_id;
+
+    @Column(name="column_id")
+    private Integer column_id;
+
     @CreatedDate
     @Column(name="timecreated")
     private LocalDate timecreated;
@@ -37,20 +43,41 @@ public class Resource {
     @Column(name="timeupdated")
     private LocalDate timeupdated;
 
-    @OneToMany(targetEntity = ProjectResource.class, cascade = CascadeType.ALL, mappedBy = "Resource")
+    @OneToMany(targetEntity = ProjectResource.class, cascade = CascadeType.ALL, mappedBy = "resource")
     @LazyCollection(LazyCollectionOption.TRUE)
-    private Collection<ProjectResource> projectResources;
+    private List<ProjectResource> projectResources;
 
-    @OneToMany(targetEntity = Columns.class,cascade = CascadeType.ALL, mappedBy = "Resource", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Columns.class,cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
     private List<Columns> columnsList = new ArrayList<>();
 
     public Resource(){}
 
-    public Resource(String name, Integer rcode){
+    public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
+        this.projectResources = projectCollection;
+    }
+
+    public void add(ProjectResource temp){
+        if(projectResources == null){
+            projectResources = new ArrayList<ProjectResource>();
+        }
+        projectResources.add(temp);
+    }
+    public void setColumns(ArrayList<Columns> projectCollection) {
+        this.columnsList = projectCollection;
+    }
+
+    public void add(Columns temp){
+        if(columnsList == null){
+            columnsList = new ArrayList<Columns>();
+        }
+        columnsList.add(temp);
+    }
+
+    public Resource(String name, Integer rcode, Integer prid, Integer columnid){
         this.name = name;
         this.rcode = rcode;
-//        this.prid = prid;
-//        this.columnid = columnid;
+        this.pr_id = prid;
+        this.column_id = columnid;
         this.timecreated = LocalDate.now();
         this.timeupdated = LocalDate.now();
     }

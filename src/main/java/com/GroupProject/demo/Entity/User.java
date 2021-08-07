@@ -54,7 +54,7 @@ public class User {
     @Column(name="project_id")
     private Integer project_id;
 
-    @OneToMany(targetEntity = Project.class, cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Project> projectCollection;
 
     public User(String user, String pass, String fname, String lname, String email, Integer phone, Role role, Integer pid){
