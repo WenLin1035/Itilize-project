@@ -33,7 +33,7 @@ public class User {
     @Column(name="last_name")
     private String last_name;
 
-    @Column(name="email_address",unique = true,nullable = false)
+    @Column(name="email_address",unique = true)
     private String email;
 
     @Column(name="phone")
@@ -51,13 +51,13 @@ public class User {
     @Column(name="role")
     private Role role;
 
-    @Column(name="project_id")
-    private Integer project_id;
+//    @Column(name="project_id")
+//    private Integer project_id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY,targetEntity = Project.class)
     private List<Project> projectCollection;
 
-    public User(String user, String pass, String fname, String lname, String email, Integer phone, Role role, Integer pid){
+    public User(String user, String pass, String fname, String lname, String email, Integer phone, Role role){
         user_name = user;
         password = pass;
         first_name = fname;
@@ -67,7 +67,7 @@ public class User {
         this.timecreated = LocalDate.now();
         this.timeupdated = LocalDate.now();
         this.role = role;
-        this.project_id = pid;
+        //this.project_id = pid;
     }
 
     public User() {
@@ -118,9 +118,9 @@ public class User {
         return role;
     }
 
-    public Integer getProject_id() {
-        return project_id;
-    }
+//    public Integer getProject_id() {
+//        return project_id;
+//    }
 
     public Collection<Project> getProjectCollection() {
         return projectCollection;
@@ -162,9 +162,9 @@ public class User {
         this.role = role;
     }
 
-    public void setProject_id(Integer project_id) {
-        this.project_id = project_id;
-    }
+//    public void setProject_id(Integer project_id) {
+//        this.project_id = project_id;
+//    }
 
     public void setProjectCollection(ArrayList<Project> projectCollection) {
         this.projectCollection = projectCollection;

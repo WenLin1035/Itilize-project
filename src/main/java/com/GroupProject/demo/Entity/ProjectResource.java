@@ -12,12 +12,14 @@ public class ProjectResource {
     @GeneratedValue
     @Column(name="id",nullable = false,unique = true)
     private Integer id;
-    @ManyToOne(cascade = CascadeType.MERGE,targetEntity = Project.class)
+    @JoinColumn(name="pr_id")
     private Integer pr_id;
+    @ManyToOne(cascade = CascadeType.MERGE,targetEntity = Project.class)
     @JoinColumn(name="project_id")
-    private Integer pid;
+    private Project pid;
+    @ManyToOne(targetEntity = Resource.class,cascade = CascadeType.MERGE)
     @JoinColumn(name="rid")
-    private Integer rid;
+    private Resource rid;
 
     public Integer getId() {
         return id;
@@ -35,19 +37,19 @@ public class ProjectResource {
         this.pr_id = pr_id;
     }
 
-    public Integer getPid() {
+    public Project getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(Project pid) {
         this.pid = pid;
     }
 
-    public Integer getRid() {
+    public Resource getRid() {
         return rid;
     }
 
-    public void setRid(Integer rid) {
+    public void setRid(Resource rid) {
         this.rid = rid;
     }
 }

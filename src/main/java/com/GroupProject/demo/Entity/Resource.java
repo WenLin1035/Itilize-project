@@ -29,11 +29,11 @@ public class Resource {
     @Column(name="rcode")
     private Integer rcode;
 
-    @Column(name="pr_id")
-    private Integer pr_id;
-
-    @Column(name="column_id")
-    private Integer column_id;
+//    @Column(name="pr_id")
+//    private Integer pr_id;
+//
+//    @Column(name="column_id")
+//    private Integer column_id;
 
     @CreatedDate
     @Column(name="timecreated")
@@ -76,8 +76,8 @@ public class Resource {
     public Resource(String name, Integer rcode, Integer prid, Integer columnid){
         this.name = name;
         this.rcode = rcode;
-        this.pr_id = prid;
-        this.column_id = columnid;
+//        this.pr_id = prid;
+//        this.column_id = columnid;
         this.timecreated = LocalDate.now();
         this.timeupdated = LocalDate.now();
     }

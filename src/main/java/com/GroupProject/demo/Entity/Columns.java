@@ -22,7 +22,7 @@ public class Columns {
     private LocalDate createdate;
     @LastModifiedDate
     private LocalDate lastupdate;
-    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Resource.class)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="rid")
     private Resource resource;
 

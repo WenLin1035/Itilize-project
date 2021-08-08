@@ -16,13 +16,14 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class UserRepositoryTest {
     @Autowired
-    ColumnsRepository userRepository;
+    UserRepository userRepository;
 
     @Test
     public void saveTest(){
-        Columns col = new Columns();
-        col.setColumnName("jason");
-        Columns test = userRepository.save(col);
-        System.out.println(test.getColumnName());
+        User col = new User();
+        col.setUser_name("jason");
+        col.setPassword("123456");
+        User test = userRepository.save(col);
+        System.out.println(test.getUser_name());
     }
 }

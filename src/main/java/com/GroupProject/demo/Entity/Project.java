@@ -34,12 +34,12 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    //@ManyToOne(cascade = {CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.DETACH},targetEntity = User.class)
     @JoinColumn(name="user_id")
-    private Integer user_id;
+    private User user_id;
 
-    @Column(name="pr_id")
-    private  Integer pr_id;
+//    @Column(name="pr_id")
+//    private Integer pr_id;
 
     @OneToMany(targetEntity = ProjectResource.class,cascade = CascadeType.REMOVE,mappedBy = "project")
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -90,20 +90,20 @@ public class Project {
         this.updatetime = updatetime;
     }
 
-    public Integer getUser_id() {
+    public User getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(User user_id) {
         this.user_id = user_id;
     }
 
-    public Integer getPr_id() {
-        return pr_id;
-    }
-
-    public void setPr_id(Integer pr_id) {
-        this.pr_id = pr_id;
-    }
+//    public Integer getPr_id() {
+//        return pr_id;
+//    }
+//
+//    public void setPr_id(Integer pr_id) {
+//        this.pr_id = pr_id;
+//    }
 
 }
