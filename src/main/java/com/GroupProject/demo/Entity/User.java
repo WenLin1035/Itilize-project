@@ -1,22 +1,16 @@
 package com.GroupProject.demo.Entity;
 
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.DynamicUpdate;
-
+import constants.Roles;
 import javax.persistence.*;
-import java.math.BigDecimal;
-
-/*
-@author: Wen Lin
- */
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer id;
+    @Column(name="user_id")
+    private int userId;
 
     @Column(name="username")
     private String username;
@@ -24,39 +18,31 @@ public class User {
     @Column(name="password")
     private String password;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="first_name")
+    private String firstName;
 
-    public User(){}
+    @Column(name="last_name")
+    private String lastName;
 
-    public User(String user, String pass, String name){
-        username = user;
-        password = pass;
-        this.name = name;
-    }
+    @Column(name="email")
+    private String email;
 
-    public Integer getId(){
-        return id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
-    public String getUsername(){
-        return username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
-    public String getPassword(){
-        return password;
-    }
-    public void setPassword(String pass){
-        this.password = pass;
-    }
-    public String name(){
-        return name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+    @Column(name="phone")
+    private int phone;
+
+    @Column(name="time_created")
+    private LocalDateTime timeCreated;
+
+    @Column(name="time_updated")
+    private LocalDateTime timeUpdated;
+
+    @Column(name="roles")
+    private Roles ROLES;
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="project_id")
+    private Project project;
+
+    /*@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade= CascadeType.ALL)
+    private List<Project> projects;*/
 }
