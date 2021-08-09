@@ -4,18 +4,22 @@ package com.GroupProject.demo.Entity;
  */
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name="projectresource")
 public class ProjectResource {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="pr_id")
     private Integer pr_id;
+
     @ManyToOne(cascade = CascadeType.DETACH,targetEntity = Project.class)
     @JoinColumn(name="project_id")
     private Project project;
-    @ManyToOne(targetEntity = Resource.class,cascade = CascadeType.DETACH)
+
+    @ManyToOne(targetEntity = Resource.class,cascade = {CascadeType.DETACH})
     @JoinColumn(name="rid")
     private Resource resources;
 
