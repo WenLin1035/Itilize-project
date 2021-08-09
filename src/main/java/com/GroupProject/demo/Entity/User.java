@@ -54,21 +54,8 @@ public class User {
 //    @Column(name="project_id")
 //    private Integer project_id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY,targetEntity = Project.class)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Project> projectCollection;
-
-    public User(String user, String pass, String fname, String lname, String email, Integer phone, Role role){
-        user_name = user;
-        password = pass;
-        first_name = fname;
-        last_name = lname;
-        this.email = email;
-        this.phone = phone;
-        this.timecreated = LocalDate.now();
-        this.timeupdated = LocalDate.now();
-        this.role = role;
-        //this.project_id = pid;
-    }
 
     public User() {
 

@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name="resource")
 public class Resource {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="rid")
     private Integer rid;
 
@@ -29,12 +29,6 @@ public class Resource {
     @Column(name="rcode")
     private Integer rcode;
 
-//    @Column(name="pr_id")
-//    private Integer pr_id;
-//
-//    @Column(name="column_id")
-//    private Integer column_id;
-
     @CreatedDate
     @Column(name="timecreated")
     private LocalDate timecreated;
@@ -43,12 +37,11 @@ public class Resource {
     @Column(name="timeupdated")
     private LocalDate timeupdated;
 
-    @OneToMany(targetEntity = ProjectResource.class, cascade = CascadeType.ALL, mappedBy = "resource")
-    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
     private List<ProjectResource> projectResources;
 
-    @OneToMany(targetEntity = Columns.class,cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
-    private List<Columns> columnsList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
+    private List<Columns> columnsList;
 
     public Resource(){}
 

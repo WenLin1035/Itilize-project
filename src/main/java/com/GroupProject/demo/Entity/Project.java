@@ -19,7 +19,7 @@ import java.util.Set;
 @Table(name="project")
 public class Project {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="project_id")
     private Integer id;
 
@@ -34,28 +34,27 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    @ManyToOne(cascade = {CascadeType.DETACH},targetEntity = User.class)
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="user_id")
     private User user_id;
 
 //    @Column(name="pr_id")
 //    private Integer pr_id;
 
-    @OneToMany(targetEntity = ProjectResource.class,cascade = CascadeType.REMOVE,mappedBy = "project")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ProjectResource> resources;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "project",fetch = FetchType.LAZY)
+    private List<ProjectResource> project;
 
     public Project(){}
 
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
-        this.resources = projectCollection;
+        this.project = projectCollection;
     }
 
     public void add(ProjectResource temp){
-        if(resources == null){
-            resources = new ArrayList<ProjectResource>();
+        if(project == null){
+            project = new ArrayList<ProjectResource>();
         }
-        resources.add(temp);
+        project.add(temp);
     }
 
     public Integer getId(){

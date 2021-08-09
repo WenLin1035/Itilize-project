@@ -9,25 +9,17 @@ import javax.persistence.*;
 @Table(name="projectresource")
 public class ProjectResource {
     @Id
-    @GeneratedValue
-    @Column(name="id",nullable = false,unique = true)
-    private Integer id;
-    @JoinColumn(name="pr_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="pr_id")
     private Integer pr_id;
-    @ManyToOne(cascade = CascadeType.MERGE,targetEntity = Project.class)
+    @ManyToOne(cascade = CascadeType.DETACH,targetEntity = Project.class)
     @JoinColumn(name="project_id")
-    private Project pid;
-    @ManyToOne(targetEntity = Resource.class,cascade = CascadeType.MERGE)
+    private Project project;
+    @ManyToOne(targetEntity = Resource.class,cascade = CascadeType.DETACH)
     @JoinColumn(name="rid")
-    private Resource rid;
+    private Resource resources;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getPr_id() {
         return pr_id;
@@ -38,18 +30,18 @@ public class ProjectResource {
     }
 
     public Project getPid() {
-        return pid;
+        return project;
     }
 
     public void setPid(Project pid) {
-        this.pid = pid;
+        this.project = pid;
     }
 
     public Resource getRid() {
-        return rid;
+        return resources;
     }
 
     public void setRid(Resource rid) {
-        this.rid = rid;
+        this.resources = rid;
     }
 }

@@ -11,16 +11,19 @@ import java.time.LocalDate;
 @Table(name="columns")
 public class Columns {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="columnid")
     private Integer columnid;
     @Column(name="columnName")
     private String columnName;
     @Enumerated(EnumType.STRING)
+    @Column(name = "col_type")
     private ColumnType columnType;
     @CreatedDate
+    @Column(name = "timecreated")
     private LocalDate createdate;
     @LastModifiedDate
+    @Column(name = "timeupdated")
     private LocalDate lastupdate;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="rid")
