@@ -3,6 +3,7 @@ package com.GroupProject.demo.Entity;
 import constants.Roles;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -39,10 +40,10 @@ public class User {
     @Column(name="roles")
     private Roles ROLES;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="project_id")
-    private Project project;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade= CascadeType.ALL)
+    private List<Project> projects;
 
-    /*@OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade= CascadeType.ALL)
-    private List<Project> projects;*/
+    /*@OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="project_id")
+    private Project project;*/
 }
