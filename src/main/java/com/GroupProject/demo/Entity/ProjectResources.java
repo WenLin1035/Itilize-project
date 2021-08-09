@@ -17,7 +17,7 @@ public class ProjectResources {
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="resource_id")
-    private ResourceCatalog resourceCatalog;
+    private Resources resourceCatalog;
 
     public int getPR_id() {
         return PR_id;
@@ -35,11 +35,11 @@ public class ProjectResources {
         this.project = project;
     }
 
-    public ResourceCatalog getResourceCatalog() {
+    public Resources getResourceCatalog() {
         return resourceCatalog;
     }
 
-    public void setResourceCatalog(ResourceCatalog resourceCatalog) {
+    public void setResourceCatalog(Resources resourceCatalog) {
         this.resourceCatalog = resourceCatalog;
     }
 
