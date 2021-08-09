@@ -37,10 +37,10 @@ public class Resource {
     @Column(name="timeupdated")
     private LocalDate timeupdated;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
     private List<ProjectResource> projectResources;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
     private List<Columns> columnsList;
 
     public Resource(){}

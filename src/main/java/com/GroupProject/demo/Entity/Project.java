@@ -36,7 +36,7 @@ public class Project {
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="user_id")
-    private User user_id;
+    private User user;
 
 //    @Column(name="pr_id")
 //    private Integer pr_id;
@@ -90,11 +90,11 @@ public class Project {
     }
 
     public User getUser_id() {
-        return user_id;
+        return user;
     }
 
     public void setUser_id(User user_id) {
-        this.user_id = user_id;
+        this.user = user_id;
     }
 
 //    public Integer getPr_id() {

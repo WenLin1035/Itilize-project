@@ -27,7 +27,7 @@ public class Columns {
     private LocalDate lastupdate;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="rid")
-    private Resource resource;
+    private Resource resources;
 
     public Integer getColumnid() {
         return columnid;
@@ -70,10 +70,10 @@ public class Columns {
     }
 
     public Resource getResource() {
-        return resource;
+        return resources;
     }
 
     public void setResource(Resource resource) {
-        this.resource = resource;
+        this.resources = resource;
     }
 }

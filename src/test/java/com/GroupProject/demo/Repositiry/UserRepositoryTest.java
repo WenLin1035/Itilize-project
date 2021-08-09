@@ -26,12 +26,13 @@ public class UserRepositoryTest{
     @Test
     public void saveTest(){
         User col = new User();
-        col.setUser_name("jason");
-        col.setPassword("123456");
-        col.setEmail("orange@gmail.com");
-        col.setFirst_name("hi");
-        col.setLast_name("goo");
-        col.setPhone(1234567);
+        col.setUser_name("ma33on");
+        col.setPassword("12344456");
+        col.setEmail("masotttn@gmail.com");
+        col.setFirst_name("maddson");
+        col.setLast_name("oaan");
+        col.setPhone(1266667);
         User test = userRepository.save(col);
+        System.out.println(test);
     }
 }

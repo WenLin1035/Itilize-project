@@ -163,4 +163,21 @@ public class User {
         }
         projectCollection.add(temp);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + user_id +
+                ", username='" + user_name + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + first_name + '\'' +
+                ", lastName='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                ", timeCreated=" + timecreated +
+                ", timeUpdated=" + timeupdated +
+                ", ROLES=" + role +
+                ", projects=" + projectCollection +
+                '}';
+    }
 }
