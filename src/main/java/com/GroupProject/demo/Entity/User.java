@@ -47,6 +47,26 @@ public class User {
     @JoinColumn(name="project_id")
     private Project project;*/
 
+    public User() {
+        if(this.timeCreated == null){
+            this.timeCreated = LocalDateTime.now();
+        }else{
+            this.timeUpdated = LocalDateTime.now();
+        }
+
+    }
+
+    public User(int userId, String username, String password, String firstName, String lastName, String email, int phone) {
+        this();
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public int getUserId() {
         return userId;
     }
