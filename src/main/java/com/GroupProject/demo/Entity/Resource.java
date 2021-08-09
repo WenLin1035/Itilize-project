@@ -45,6 +45,11 @@ public class Resource {
 
     public Resource(){}
 
+    @Override
+    public String toString(){
+        return "Resource id: " + rid + " / name: " + rcode;
+    }
+
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
         this.projectResources = projectCollection;
     }
@@ -64,15 +69,6 @@ public class Resource {
             columnsList = new ArrayList<Columns>();
         }
         columnsList.add(temp);
-    }
-
-    public Resource(String name, Integer rcode, Integer prid, Integer columnid){
-        this.name = name;
-        this.rcode = rcode;
-//        this.pr_id = prid;
-//        this.column_id = columnid;
-        this.timecreated = LocalDate.now();
-        this.timeupdated = LocalDate.now();
     }
 
     public void setRid(Integer rid) {

@@ -29,6 +29,12 @@ public class Columns {
     @JoinColumn(name="rid")
     private Resource resources;
 
+    @Override
+    public String toString(){
+        return "columnid: " + columnid + " / column name: " + columnName + " / column type: "
+                + columnType + " / rid: " + resources;
+    }
+
     public Integer getColumnid() {
         return columnid;
     }

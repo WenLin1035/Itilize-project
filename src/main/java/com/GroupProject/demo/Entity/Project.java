@@ -46,6 +46,11 @@ public class Project {
 
     public Project(){}
 
+    @Override
+    public String toString(){
+        return "Project Id: " + id + "/ Project name: " + name + "/ User_id" + user;
+    }
+
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
         this.project = projectCollection;
     }
