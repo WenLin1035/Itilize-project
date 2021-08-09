@@ -1,7 +1,5 @@
 package com.GroupProject.demo.Entity;
 
-import constants.ColumnsType;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -10,7 +8,7 @@ import java.time.LocalDateTime;
 public class Columns {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="col_id")
     private int colId;
 
@@ -26,7 +24,7 @@ public class Columns {
     @Column(name="time_updated")
     private LocalDateTime timeUpdated;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade= {CascadeType.MERGE})
     @JoinColumn(name="resource_id")
     private Resources resources;
 

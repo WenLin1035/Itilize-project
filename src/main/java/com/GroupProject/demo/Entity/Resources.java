@@ -10,7 +10,7 @@ public class Resources {
 
     //primary key
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="resource_id")
     private int resourceId;
 
@@ -26,10 +26,10 @@ public class Resources {
     @Column(name="time_updated")
     private LocalDateTime timeUpdated;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="resourceCatalog", cascade= CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="resources", cascade= CascadeType.ALL)
     private List<ProjectResources> projectResources;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="resourceCatalog", cascade= CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="resources", cascade= CascadeType.ALL)
     private List<Columns> columns;
 
     public int getResourceId() {

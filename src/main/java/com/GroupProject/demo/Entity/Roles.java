@@ -1,4 +1,4 @@
-package constants;
+package com.GroupProject.demo.Entity;
 
 public enum Roles {
     USER,

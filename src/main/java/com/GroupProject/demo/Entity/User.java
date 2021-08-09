@@ -1,6 +1,5 @@
 package com.GroupProject.demo.Entity;
 
-import constants.Roles;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,9 +8,9 @@ import java.util.List;
 @Table(name="user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="user_id")
-    private int userId;
+    private Integer userId;
 
     @Column(name="username")
     private String username;
@@ -47,30 +46,15 @@ public class User {
     @JoinColumn(name="project_id")
     private Project project;*/
 
-    public User() {
-        if(this.timeCreated == null){
-            this.timeCreated = LocalDateTime.now();
-        }else{
-            this.timeUpdated = LocalDateTime.now();
-        }
 
-    }
 
-    public User(String username, String password, String firstName, String lastName, String email, int phone) {
-        this();
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-    }
 
-    public int getUserId() {
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

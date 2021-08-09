@@ -26,7 +26,7 @@ public class Project {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="resourceCatalog", cascade= CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="project", cascade= CascadeType.ALL)
     private List<ProjectResources> projectResources;
 
     public int getProjectId() {
