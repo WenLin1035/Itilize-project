@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="resource_catalog")
-public class ResourceCatalog {
+@Table(name="resources")
+public class Resources {
 
     //primary key
     @Id
@@ -90,7 +90,7 @@ public class ResourceCatalog {
 
     @Override
     public String toString() {
-        return "ResourceCatalog{" +
+        return "Resources{" +
                 "resourceId=" + resourceId +
                 ", resourceName='" + resourceName + '\'' +
                 ", resourceCode='" + resourceCode + '\'' +
