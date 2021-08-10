@@ -1,7 +1,8 @@
-package com.GroupProject.demo.Entity;
+package com.GroupProject.demo.Repository;
 
 import com.GroupProject.demo.Entity.Enums.Roles;
-import com.GroupProject.demo.Repository.UserRepository;
+import com.GroupProject.demo.Entity.Project;
+import com.GroupProject.demo.Entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,36 +14,58 @@ import java.time.LocalDateTime;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UserTest {
-
+public class ProjectRepositoryTest {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ProjectRepository projectRepository;
 
-
-    //Create User
+    //Create Project
     @Test
-    public void createUserTest(){
+    public void createProjectTest(){
+
+        //Create new user
+        /*In case database gets cleared, creation of new user to avoid
+        /*referencing non-existing user.
+        /*Tests should be independent of each other.*/
         User user = new User();
-        user.setUsername("username1");
-        user.setPassword("password1");
-        user.setFirstName("firstName1");
-        user.setLastName("lastName1");
-        user.setEmail("email1");
-        user.setPhone(123456789);
+        user.setUsername("username2");
+        user.setPassword("password2");
+        user.setFirstName("firstName2");
+        user.setLastName("lastName2");
+        user.setEmail("email2");
+        user.setPhone("12345678910");
         user.setTimeCreated(LocalDateTime.now());
         user.setTimeUpdated(LocalDateTime.now());
 
         User userTest = userRepository.save(user);
-        System.out.println(userTest);
+
+        boolean IsUserExists = userRepository.existsById(userTest.getUserId());
 
         Assert.assertNotNull(userTest);
+        Assert.assertTrue(IsUserExists);
         Assert.assertEquals(user, userTest);
+
+        //Create new project
+        Project project = new Project();
+        project.setProjectName("Project 1");
+        project.setUser(userTest);
+        project.setTimeCreated(LocalDateTime.now());
+        project.setTimeUpdated(LocalDateTime.now());
+
+        Project projectTest = projectRepository.save(project);
+
+        boolean IsProjectExists = projectRepository.existsById(project.getProjectId());
+
+        Assert.assertNotNull(projectTest);
+        Assert.assertTrue(IsProjectExists);
+        Assert.assertEquals(project, projectTest);
     }
 
     //Read User
     @Test
     public void readUserByIdTest(){
-        Integer userId = 2;
+        Integer userId = 3;
 
         boolean IsUserExists = userRepository.existsById(userId);
 
@@ -52,7 +75,7 @@ public class UserTest {
     //Update User
     @Test
     public void updateUserByIdTest(){
-        Integer userId= 2;
+        Integer userId= 3;
         User expected = userRepository.getOne(userId);
         expected.setROLES(Roles.USER);
         expected.setTimeUpdated(LocalDateTime.now());
@@ -65,7 +88,7 @@ public class UserTest {
     //Delete User
     @Test
     public void deleteUserByIdTest(){
-        Integer userId= 2;
+        Integer userId= 3;
         User expected = userRepository.getOne(userId);
 
         userRepository.deleteById(userId);
