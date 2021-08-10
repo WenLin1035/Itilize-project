@@ -54,7 +54,7 @@ public class User {
 //    @Column(name="project_id")
 //    private Integer project_id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Project> projectCollection;
 
     public User() {
@@ -105,11 +105,8 @@ public class User {
         return role;
     }
 
-//    public Integer getProject_id() {
-//        return project_id;
-//    }
 
-    public Collection<Project> getProjectCollection() {
+    public List<Project> getProjectCollection() {
         return projectCollection;
     }
 
@@ -157,7 +154,7 @@ public class User {
         this.projectCollection = projectCollection;
     }
 
-    public void add(Project temp){
+    public void addproject(Project temp){
         if(projectCollection == null){
             projectCollection = new ArrayList<Project>();
         }

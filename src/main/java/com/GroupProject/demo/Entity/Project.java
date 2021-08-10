@@ -34,21 +34,21 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="user_id")
     private User user;
 
 //    @Column(name="pr_id")
 //    private Integer pr_id;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "project",fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.DETACH,mappedBy = "project",fetch = FetchType.LAZY)
     private List<ProjectResource> project;
 
     public Project(){}
 
     @Override
     public String toString(){
-        return "Project Id: " + id + "/ Project name: " + name + "/ User_id" + user;
+        return "Project Id: " + id + "/ Project name: " + name + "/ User_id" + user.getUser_id();
     }
 
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
