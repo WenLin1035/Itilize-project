@@ -22,7 +22,7 @@ public class Project {
     @Column(name="time_updated")
     private LocalDateTime timeUpdated;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade= {CascadeType.MERGE})
     @JoinColumn(name="user_id")
     private User user;
 
