@@ -30,7 +30,7 @@ public class User {
     private String email;
 
     @Column(name="phone", nullable = false)
-    private Integer phone;
+    private String phone;
 
     @Column(name="time_created")
     private LocalDateTime timeCreated;
@@ -94,11 +94,11 @@ public class User {
         this.email = email;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
