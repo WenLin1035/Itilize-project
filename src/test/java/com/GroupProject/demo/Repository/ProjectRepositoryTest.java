@@ -72,17 +72,17 @@ public class ProjectRepositoryTest {
         Assert.assertTrue(IsProjectExists);
     }
 
-    //Update User
+    //Update project
     @Test
-    public void updateUserByIdTest(){
-        Integer userId= 3;
-        User expected = userRepository.getOne(userId);
-        expected.setROLES(Roles.USER);
+    public void updateProjectByIdTest(){
+        Integer projectId= 1;
+        Project expected = projectRepository.getOne(projectId);
+        expected.setProjectName("Project1");
         expected.setTimeUpdated(LocalDateTime.now());
 
-        User actual = userRepository.save(expected);
+        Project actual = projectRepository.save(expected);
 
-        Assert.assertEquals(Roles.USER, actual.getROLES());
+        Assert.assertEquals("Project1", actual.getProjectName());
     }
 
     //Delete User
