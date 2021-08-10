@@ -13,7 +13,7 @@ addResourceToProject(resourceId);          /project/update/resource/{resource_id
 
 deleteProjectById(projectId);              /project/delete/{project_id}
 deleteProjectByName(projectName);          /project/delete/{project_name}
-deleteResourceFromProject(projectName);    /project/delete/resource/{resource_id}
+deleteResourceFromProject(projectId);      /project/delete/resource/{resource_id}
 
 
 
