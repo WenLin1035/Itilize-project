@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -18,29 +20,60 @@ public class UserTest {
     UserRepository userRepository;
 
 
+    //Create User
     @Test
     public void createUserTest(){
-        // Stemail = "email0"ring username = "user0";
-        //   String password = "passwd0";
-        //   String firstName = "first0";
-        //  String lastName = "last0";
-        //   String email = "email0";
-        //   int phone = 123456789;
         User user = new User();
-        user.setUsername("user3");
-        user.setPassword("passwd0");
-        user.setFirstName("first0");
-        user.setLastName("lastName");
-        user.setEmail("email0");
+        user.setUsername("username1");
+        user.setPassword("password1");
+        user.setFirstName("firstName1");
+        user.setLastName("lastName1");
+        user.setEmail("email1");
         user.setPhone(123456789);
+        user.setTimeCreated(LocalDateTime.now());
+        user.setTimeUpdated(LocalDateTime.now());
 
-        User userTest1 = userRepository.save(user);
-        System.out.println(userTest1);
+        User userTest = userRepository.save(user);
+        System.out.println(userTest);
 
+        Assert.assertNotNull(userTest);
+        Assert.assertEquals(user, userTest);
+    }
 
+    //Read User
+    @Test
+    public void readUserByIdTest(){
+        Integer userId = 2;
 
-        Assert.assertNotNull(userTest1);
+        boolean IsUserExists = userRepository.existsById(userId);
 
+        Assert.assertTrue(IsUserExists);
+    }
+
+    //Update User
+    @Test
+    public void updateUserByIdTest(){
+        Integer userId= 2;
+        User expected = userRepository.getOne(userId);
+        expected.setROLES(Roles.USER);
+        expected.setTimeUpdated(LocalDateTime.now());
+
+        User actual = userRepository.save(expected);
+
+        Assert.assertEquals(Roles.USER, actual.getROLES());
+    }
+
+    //Delete User
+    @Test
+    public void deleteUserByIdTest(){
+        Integer userId= 2;
+        User expected = userRepository.getOne(userId);
+
+        userRepository.deleteById(userId);
+
+        boolean actual = userRepository.existsById(userId);
+
+        Assert.assertFalse(actual);
     }
 
 }
