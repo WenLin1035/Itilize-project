@@ -12,7 +12,7 @@ updateUserById(userId);                       /user/update/{user_id}
 
 deleteUserById(userId);                       /user/delete/{user_id}
 deleteUserByUsername(username);               /user/delete/{username}
-deleteUsers();                                /user/delete/allUsers
+deleteUsers();                                /user/delete/all
 
 
 
