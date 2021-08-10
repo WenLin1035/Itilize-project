@@ -1,5 +1,7 @@
 package com.GroupProject.demo.Entity;
 
+import com.GroupProject.demo.Entity.Enums.Roles;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;

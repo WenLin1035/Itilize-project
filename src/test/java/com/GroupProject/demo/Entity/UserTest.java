@@ -1,5 +1,6 @@
 package com.GroupProject.demo.Entity;
 
+import com.GroupProject.demo.Entity.Enums.Roles;
 import com.GroupProject.demo.Repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

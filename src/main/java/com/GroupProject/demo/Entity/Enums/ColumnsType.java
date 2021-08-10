@@ -1,4 +1,4 @@
-package com.GroupProject.demo.Entity;
+package com.GroupProject.demo.Entity.Enums;
 
 public enum ColumnsType {
     NUMBER,

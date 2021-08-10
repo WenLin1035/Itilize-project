@@ -1,5 +1,7 @@
 package com.GroupProject.demo.Entity;
 
+import com.GroupProject.demo.Entity.Enums.ColumnsType;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
