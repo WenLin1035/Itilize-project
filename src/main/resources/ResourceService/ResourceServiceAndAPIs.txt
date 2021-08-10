@@ -1,0 +1,22 @@
+Resource Services and APIs
+--------------------------------------------------------------------------------
+
+createResource();                          /resource/create
+
+getResourceById(resourceId);               /resource/{resource_id}
+getResourceByName(resourceName);           /resource/{resource_name}
+getResourceByCode(resourceCode);           /resource/{resource_name}
+
+updateResourceById(resourceId);            /resource/update/{resource_id}
+updateResourceByName(resourceName);        /resource/update/{resource_name}
+updateResourceByCode(resourceCode);        /resource/update/{resource_code}
+
+deleteResourceById(resourceId);            /resource/delete/{resource_id}
+deleteResourceByName(resourceName);        /resource/delete/{resource_name}
+deleteResourceByCode(resourceCode);        /resource/delete/{resource_code}
+
+
+
+
+
+
