@@ -27,7 +27,7 @@ public class UserRepositoryTest {
         user.setFirstName("firstName1");
         user.setLastName("lastName1");
         user.setEmail("email1");
-        user.setPhone(123456789);
+        user.setPhone("123456789");
         user.setTimeCreated(LocalDateTime.now());
         user.setTimeUpdated(LocalDateTime.now());
 
@@ -64,7 +64,7 @@ public class UserRepositoryTest {
     //Delete User
     @Test
     public void deleteUserByIdTest(){
-        Integer userId= 3;
+        Integer userId= 9;
         User expected = userRepository.getOne(userId);
 
         userRepository.deleteById(userId);
