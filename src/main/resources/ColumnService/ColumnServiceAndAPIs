@@ -1,0 +1,21 @@
+Column Services and APIs
+--------------------------------------------------------------------------------
+
+createColumn();                            /column/create
+
+getColumnById(columnId);                   /column/{column_id}
+getColumnByContent(columnContent);         /column/{column_content}
+getAllColumns();                           /column/all
+
+updateColumnById(columnId);                /column/update/{column_id}
+updateColumnByContent(columnContent);      /column/update/{column_content}
+
+deleteColumnById(columnId);                /column/delete/{column_id}
+deleteColumnByContent(columnContent);      /column/delete/{column_content}
+deleteColumns();                           /column/delete/all
+
+
+
+
+
+
