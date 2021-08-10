@@ -41,7 +41,7 @@ public class UserRepositoryTest {
     //Read User
     @Test
     public void readUserByIdTest(){
-        Integer userId = 3;
+        Integer userId = 1;
 
         boolean IsUserExists = userRepository.existsById(userId);
 
