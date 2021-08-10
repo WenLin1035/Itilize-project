@@ -85,15 +85,15 @@ public class ProjectRepositoryTest {
         Assert.assertEquals("Project1", actual.getProjectName());
     }
 
-    //Delete User
+    //Delete Project
     @Test
-    public void deleteUserByIdTest(){
-        Integer userId= 3;
-        User expected = userRepository.getOne(userId);
+    public void deleteProjectByIdTest(){
+        Integer projectId= 1;
+        Project expected = projectRepository.getOne(projectId);
 
-        userRepository.deleteById(userId);
+        projectRepository.deleteById(projectId);
 
-        boolean actual = userRepository.existsById(userId);
+        boolean actual = projectRepository.existsById(projectId);
 
         Assert.assertFalse(actual);
     }
