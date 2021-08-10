@@ -11,13 +11,13 @@ public class Resources {
     //primary key
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="resource_id")
-    private int resourceId;
+    @Column(name="resource_id", nullable = false, updatable = false)
+    private Integer resourceId;
 
-    @Column(name="resource_name")
+    @Column(name="resource_name", nullable = false, unique = true)
     private String resourceName;
 
-    @Column(name="resource_code")
+    @Column(name="resource_code", nullable = false, unique = true)
     private String resourceCode;
 
     @Column(name="time_created")
@@ -32,11 +32,11 @@ public class Resources {
     @OneToMany(fetch=FetchType.LAZY, mappedBy="resources", cascade= CascadeType.ALL)
     private List<Columns> columns;
 
-    public int getResourceId() {
+    public Integer getResourceId() {
         return resourceId;
     }
 
-    public void setResourceId(int resourceId) {
+    public void setResourceId(Integer resourceId) {
         this.resourceId = resourceId;
     }
 

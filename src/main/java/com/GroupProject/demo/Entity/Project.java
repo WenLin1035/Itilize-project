@@ -10,10 +10,10 @@ public class Project {
     //primary key
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="project_id")
-    private int projectId;
+    @Column(name="project_id", nullable = false, updatable = false)
+    private Integer projectId;
 
-    @Column(name="project_name")
+    @Column(name="project_name", nullable = false, unique = true)
     private String projectName;
 
     @Column(name="time_created")
@@ -29,11 +29,11 @@ public class Project {
     @OneToMany(fetch=FetchType.LAZY, mappedBy="project", cascade= CascadeType.ALL)
     private List<ProjectResources> projectResources;
 
-    public int getProjectId() {
+    public Integer getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 

@@ -9,12 +9,13 @@ public class Columns {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="col_id")
-    private int colId;
+    @Column(name="col_id", nullable = false, updatable = false)
+    private Integer colId;
 
-    @Column(name="content")
+    @Column(name="content", nullable = false, unique = true)
     private String content;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="columns_type")
     private ColumnsType columnsType;
 
@@ -28,11 +29,11 @@ public class Columns {
     @JoinColumn(name="resource_id")
     private Resources resources;
 
-    public int getColId() {
+    public Integer getColId() {
         return colId;
     }
 
-    public void setColId(int colId) {
+    public void setColId(Integer colId) {
         this.colId = colId;
     }
 

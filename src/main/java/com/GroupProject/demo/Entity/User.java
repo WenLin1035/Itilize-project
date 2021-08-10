@@ -9,26 +9,26 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="user_id")
+    @Column(name="user_id", nullable = false, updatable = false)
     private Integer userId;
 
-    @Column(name="username")
+    @Column(name="username", nullable = false, unique = true)
     private String username;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="first_name")
+    @Column(name="first_name", nullable = false)
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name="last_name", nullable = false)
     private String lastName;
 
-    @Column(name="email")
+    @Column(name="email", nullable = false, unique = true)
     private String email;
 
-    @Column(name="phone")
-    private int phone;
+    @Column(name="phone", nullable = false)
+    private Integer phone;
 
     @Column(name="time_created")
     private LocalDateTime timeCreated;
@@ -36,18 +36,12 @@ public class User {
     @Column(name="time_updated")
     private LocalDateTime timeUpdated;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="roles")
     private Roles ROLES;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade= CascadeType.ALL)
     private List<Project> projects;
-
-    /*@OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="project_id")
-    private Project project;*/
-
-
-
 
 
     public Integer getUserId() {
@@ -98,11 +92,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
