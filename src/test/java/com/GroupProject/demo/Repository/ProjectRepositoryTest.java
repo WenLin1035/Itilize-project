@@ -62,14 +62,14 @@ public class ProjectRepositoryTest {
         Assert.assertEquals(project, projectTest);
     }
 
-    //Read User
+    //Read Project
     @Test
-    public void readUserByIdTest(){
-        Integer userId = 3;
+    public void readProjectByIdTest(){
+        Integer projectId = 1;
 
-        boolean IsUserExists = userRepository.existsById(userId);
+        boolean IsProjectExists = projectRepository.existsById(projectId);
 
-        Assert.assertTrue(IsUserExists);
+        Assert.assertTrue(IsProjectExists);
     }
 
     //Update User

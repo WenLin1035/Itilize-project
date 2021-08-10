@@ -51,7 +51,7 @@ public class UserRepositoryTest {
     //Update User
     @Test
     public void updateUserByIdTest(){
-        Integer userId= 3;
+        Integer userId= 1;
         User expected = userRepository.getOne(userId);
         expected.setROLES(Roles.USER);
         expected.setTimeUpdated(LocalDateTime.now());
