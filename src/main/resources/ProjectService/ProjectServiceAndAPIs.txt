@@ -8,9 +8,8 @@ getProjectByName(projectName);             /project/{project_name}
 getAllProjects();                          /project/all
 getAllResourcesUsedInProject();            /project/resource/all
 
-updateProjectById(projectId);              /project/update/{project_id}
-updateProjectByName(projectName);          /project/update/{project_name}
-addResourceToProject(resourceId);          /project/update/resource/{resource_id}
+updateProject(Project project);             /project/updateProject
+addResourceToProject(resourceId);          /resource/add/{resource_id}
 
 deleteProjectById(projectId);              /project/delete/{project_id}
 deleteProjectByName(projectName);          /project/delete/{project_name}

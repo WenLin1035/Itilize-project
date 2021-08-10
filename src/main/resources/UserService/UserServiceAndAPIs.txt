@@ -8,7 +8,7 @@ getUserById(userId);                          /user/{user_id}
 getUserByUsername(username);                  /user/{username}
 getAllUsers();                                /user/getUsers
 
-updateUserById(userId);                       /user/update/{user_id}
+updateUserById(userId);                       /user/update/{username, email, ...}
 
 deleteUserById(userId);                       /user/delete/{user_id}
 deleteUserByUsername(username);               /user/delete/{username}

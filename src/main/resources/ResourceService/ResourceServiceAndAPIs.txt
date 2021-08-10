@@ -3,22 +3,22 @@ Resource Services and APIs
 
 createResource();                          /resource/create
 
-getResourceById(resourceId);               /resource/{resource_id}
-getResourceByName(resourceName);           /resource/{resource_name}
-getResourceByCode(resourceCode);           /resource/{resource_name}
-getAllResources();                        /resource/all
-getAllColumnsUsedInResource();             /resource/column/all
+getResourceById(resourceId);               /resource/getResource
+getResourceByName(resourceName);
+getResourceByCode(resourceCode);
+getAllResources();
+getAllColumnsUsedInResource();
 
-updateResourceById(resourceId);            /resource/update/{resource_id}
-updateResourceByName(resourceName);        /resource/update/{resource_name}
-updateResourceByCode(resourceCode);        /resource/update/{resource_code}
-addColumnToResource(columnId);             /resource/update/column/{column_id}
+updateResourceById(resourceId);            /resource/updateResource
+updateResourceByName(resourceName);
+updateResourceByCode(resourceCode);
+addColumnToResource(columnId);
 
-deleteResourceById(resourceId);            /resource/delete/{resource_id}
-deleteResourceByName(resourceName);        /resource/delete/{resource_name}
-deleteResourceByCode(resourceCode);        /resource/delete/{resource_code}
-deleteColumnFromResource(columnId);        /resource/delete/column/{column_id}
-deleteResources();                         /resource/delete/all
+deleteResourceById(resourceId);            /resource/deleteResource
+deleteResourceByName(resourceName);
+deleteResourceByCode(resourceCode);
+deleteColumnFromResource(columnId);
+deleteResources();                         /resource/deleteAllResources
 
 
 

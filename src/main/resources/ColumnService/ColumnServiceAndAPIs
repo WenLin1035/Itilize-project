@@ -1,18 +1,18 @@
 Column Services and APIs
 --------------------------------------------------------------------------------
 
-createColumn();                            /column/create
+createColumn();                            /column/createColumn
 
-getColumnById(columnId);                   /column/{column_id}
-getColumnByContent(columnContent);         /column/{column_content}
-getAllColumns();                           /column/all
+getColumnById(columnId);                   /column/getColumns
+getColumnByContent(columnContent);
+getAllColumns();                           /column/getAllColumns
 
-updateColumnById(columnId);                /column/update/{column_id}
-updateColumnByContent(columnContent);      /column/update/{column_content}
+updateColumnById(columnId);                /column/updateColumn
+updateColumnByContent(columnContent);
 
-deleteColumnById(columnId);                /column/delete/{column_id}
-deleteColumnByContent(columnContent);      /column/delete/{column_content}
-deleteColumns();                           /column/delete/all
+deleteColumnById(columnId);                /column/deleteColumn
+deleteColumnByContent(columnContent);      /column/deleteAllColumns
+deleteColumns();
 
 
 
