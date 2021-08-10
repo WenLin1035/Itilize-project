@@ -1,0 +1,21 @@
+Project Services and APIs
+--------------------------------------------------------------------------------
+
+createProject();                           /project/create
+
+getProjectById(projectId);                 /project/{project_id}
+getProjectByName(projectName);             /project/{project_name}
+getAllResourcesUsedInProject();            /project/resource/all
+
+updateProjectById(projectId);              /project/update/{project_id}
+updateProjectByName(projectName);          /project/update/{project_name}
+addResourceToProject(resourceId);          /project/update/resource/{resource_id}
+
+deleteProjectById(projectId);              /project/delete/{project_id}
+deleteProjectByName(projectName);          /project/delete/{project_name}
+deleteResourceFromProject(projectName);    /project/delete/resource/{resource_id}
+
+
+
+
+
