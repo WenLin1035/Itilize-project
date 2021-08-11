@@ -27,7 +27,7 @@ public class Resource {
     private LocalDateTime timeUpdated;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="resource", cascade= CascadeType.ALL)
-    private List<ProjectResources> projectResources;
+    private List<ProjectResource> projectResources;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="resource", cascade= CascadeType.ALL)
     private List<Columns> columns;
@@ -72,11 +72,11 @@ public class Resource {
         this.timeUpdated = timeUpdated;
     }
 
-    public List<ProjectResources> getProjectResources() {
+    public List<ProjectResource> getProjectResources() {
         return projectResources;
     }
 
-    public void setProjectResources(List<ProjectResources> projectResources) {
+    public void setProjectResources(List<ProjectResource> projectResources) {
         this.projectResources = projectResources;
     }
 

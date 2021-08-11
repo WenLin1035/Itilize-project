@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="project_resources")
-public class ProjectResources {
+public class ProjectResource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +45,7 @@ public class ProjectResources {
 
     @Override
     public String toString() {
-        return "ProjectResources{" +
+        return "ProjectResource{" +
                 "PR_id=" + PR_id +
                 ", project=" + project +
                 ", resourceCatalog=" + resource +

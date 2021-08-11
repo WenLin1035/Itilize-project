@@ -27,7 +27,7 @@ public class Project {
     private User user;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="project", cascade= CascadeType.ALL)
-    private List<ProjectResources> projectResources;
+    private List<ProjectResource> projectResource;
 
     public Integer getProjectId() {
         return projectId;
@@ -69,12 +69,12 @@ public class Project {
         this.user = user;
     }
 
-    public List<ProjectResources> getProjectResources() {
-        return projectResources;
+    public List<ProjectResource> getProjectResource() {
+        return projectResource;
     }
 
-    public void setProjectResources(List<ProjectResources> projectResources) {
-        this.projectResources = projectResources;
+    public void setProjectResource(List<ProjectResource> projectResource) {
+        this.projectResource = projectResource;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Project {
                 ", timeCreated=" + timeCreated +
                 ", timeUpdated=" + timeUpdated +
                 ", user=" + user +
-                ", projectResources=" + projectResources +
+                ", projectResource=" + projectResource +
                 '}';
     }
 }
