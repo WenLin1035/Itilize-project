@@ -26,7 +26,7 @@ public class ProjectRepositoryTest {
     public void createProjectTest(){
 
         //Existing user
-        Integer userId = 2;
+        Integer userId = 1;
         User user = userRepository.getOne(userId);
 
         //Create new project
