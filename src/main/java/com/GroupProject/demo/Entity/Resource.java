@@ -47,7 +47,7 @@ public class Resource {
 
     @Override
     public String toString(){
-        return "Resource id: " + rid + " / name: " + rcode;
+        return "Resource id: " + rid + " , name: " + rcode;
     }
 
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
@@ -59,6 +59,10 @@ public class Resource {
             projectResources = new ArrayList<ProjectResource>();
         }
         projectResources.add(temp);
+    }
+
+    public List<Columns> getColumnsList(){
+        return columnsList;
     }
     public void setColumns(ArrayList<Columns> projectCollection) {
         this.columnsList = projectCollection;

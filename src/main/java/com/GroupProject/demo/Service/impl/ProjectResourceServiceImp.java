@@ -47,6 +47,23 @@ public class ProjectResourceServiceImp implements ProjectResourceService {
     }
 
     @Override
+    public List<ProjectResource> getallpr() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Resource> getresourcesbyproject(Integer id) {
+        List<Resource> listresource = new ArrayList<>();
+        List<ProjectResource> pr = repository.findAll();
+        for(ProjectResource temp : pr){
+            if(temp.getPid().getId().equals(id)){
+                listresource.add(temp.getRid());
+            }
+        }
+        return listresource;
+    }
+
+    @Override
     public void deleteoneprojectresource(ProjectResource pr) {
         repository.delete(pr);
     }

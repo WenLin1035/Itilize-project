@@ -48,7 +48,7 @@ public class Project {
 
     @Override
     public String toString(){
-        return "Project Id: " + id + "/ Project name: " + name + "/ User_id" + user.getUser_id();
+        return "Project Id: " + id + "/ Project name: " + name;
     }
 
     public void setProjectResources(ArrayList<ProjectResource> projectCollection) {

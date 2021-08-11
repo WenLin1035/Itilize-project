@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class ProjextServiceImp implements ProjectService {
+public class ProjectServiceImp implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;

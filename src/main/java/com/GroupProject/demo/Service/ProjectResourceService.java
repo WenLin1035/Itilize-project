@@ -17,6 +17,9 @@ public interface ProjectResourceService {
 
     Resource getresourcebyprid(Integer prid);
 
+    List<ProjectResource> getallpr();
+    List<Resource> getresourcesbyproject(Integer id);
+
     void deleteoneprojectresource(ProjectResource pr);
 
     void deleteresourcefromproject(Resource resource, Project project);
