@@ -19,7 +19,7 @@ public class Columns {
 
     @Enumerated(EnumType.STRING)
     @Column(name="columns_type")
-    private ColumnsType columnsType;
+    private ColumnsType columnsType = ColumnsType.TEXT;
 
     @Column(name="time_created")
     private LocalDateTime timeCreated;
@@ -71,17 +71,17 @@ public class Columns {
         this.timeUpdated = timeUpdated;
     }
 
-    public Resource getResources() {
+    public Resource getResource() {
         return resource;
     }
 
-    public void setResources(Resource resource) {
+    public void setResource(Resource resource) {
         this.resource = resource;
     }
 
     @Override
     public String toString() {
-        return "Columns{" +
+        return "Column{" +
                 "colId=" + colId +
                 ", content='" + content + '\'' +
                 ", columnsType=" + columnsType +
