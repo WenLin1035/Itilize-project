@@ -42,7 +42,7 @@ public class UserServiceTest {
     @Test
     public void deletingTest(){
         //can't delete if user has a project
-        User user = userservices.findbyid(1);
+        User user = userservices.findbyid(8);
         userservices.deletebyuser(user);
     }
 }

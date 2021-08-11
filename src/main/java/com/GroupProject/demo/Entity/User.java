@@ -54,7 +54,7 @@ public class User {
 //    @Column(name="project_id")
 //    private Integer project_id;
 
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private List<Project> projectCollection;
 
     public User() {
