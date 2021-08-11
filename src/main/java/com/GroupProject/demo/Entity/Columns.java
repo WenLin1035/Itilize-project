@@ -29,7 +29,7 @@ public class Columns {
 
     @ManyToOne(cascade= {CascadeType.MERGE})
     @JoinColumn(name="resource_id")
-    private Resources resources;
+    private Resource resource;
 
     public Integer getColId() {
         return colId;
@@ -71,12 +71,12 @@ public class Columns {
         this.timeUpdated = timeUpdated;
     }
 
-    public Resources getResources() {
-        return resources;
+    public Resource getResources() {
+        return resource;
     }
 
-    public void setResources(Resources resources) {
-        this.resources = resources;
+    public void setResources(Resource resource) {
+        this.resource = resource;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Columns {
                 ", columnsType=" + columnsType +
                 ", timeCreated=" + timeCreated +
                 ", timeUpdated=" + timeUpdated +
-                ", resources=" + resources +
+                ", resource=" + resource +
                 '}';
     }
 }

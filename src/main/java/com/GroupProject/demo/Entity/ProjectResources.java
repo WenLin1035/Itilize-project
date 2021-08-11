@@ -1,7 +1,6 @@
 package com.GroupProject.demo.Entity;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name="project_resources")
@@ -16,9 +15,9 @@ public class ProjectResources {
     @JoinColumn(name="project_id")
     private Project project;
 
-    @ManyToOne(cascade= {CascadeType.DETACH}, targetEntity = Resources.class)
+    @ManyToOne(cascade= {CascadeType.DETACH}, targetEntity = Resource.class)
     @JoinColumn(name="resource_id")
-    private Resources resources;
+    private Resource resource;
 
     public Integer getPR_id() {
         return PR_id;
@@ -36,12 +35,12 @@ public class ProjectResources {
         this.project = project;
     }
 
-    public Resources getResources() {
-        return resources;
+    public Resource getResources() {
+        return resource;
     }
 
-    public void setResourceCatalog(Resources resources) {
-        this.resources = resources;
+    public void setResourceCatalog(Resource resource) {
+        this.resource = resource;
     }
 
     @Override
@@ -49,7 +48,7 @@ public class ProjectResources {
         return "ProjectResources{" +
                 "PR_id=" + PR_id +
                 ", project=" + project +
-                ", resourceCatalog=" + resources +
+                ", resourceCatalog=" + resource +
                 '}';
     }
 }

@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="resources")
-public class Resources {
+@Table(name="resource")
+public class Resource {
 
     //primary key
     @Id
@@ -26,10 +26,10 @@ public class Resources {
     @Column(name="time_updated")
     private LocalDateTime timeUpdated;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="resources", cascade= CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="resource", cascade= CascadeType.ALL)
     private List<ProjectResources> projectResources;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="resources", cascade= CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="resource", cascade= CascadeType.ALL)
     private List<Columns> columns;
 
     public Integer getResourceId() {
@@ -90,7 +90,7 @@ public class Resources {
 
     @Override
     public String toString() {
-        return "Resources{" +
+        return "Resource{" +
                 "resourceId=" + resourceId +
                 ", resourceName='" + resourceName + '\'' +
                 ", resourceCode='" + resourceCode + '\'' +
