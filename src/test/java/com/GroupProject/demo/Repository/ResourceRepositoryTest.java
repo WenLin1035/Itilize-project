@@ -23,8 +23,8 @@ public class ResourceRepositoryTest {
 
         //Create new resource
         Resource resource = new Resource();
-        resource.setResourceName("Resource 1");
-        resource.setResourceCode("00 00 00");
+        resource.setResourceName("Resource 2");
+        resource.setResourceCode("01 00 00");
         resource.setTimeCreated(LocalDateTime.now());
         resource.setTimeUpdated(LocalDateTime.now());
 
