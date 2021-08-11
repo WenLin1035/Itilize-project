@@ -1,7 +1,7 @@
 package com.GroupProject.demo.Repository;
 
-import com.GroupProject.demo.Entity.Enums.Roles;
 import com.GroupProject.demo.Entity.Project;
+import com.GroupProject.demo.Entity.Resource;
 import com.GroupProject.demo.Entity.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class ProjectRepositoryTest {
+
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -24,32 +25,14 @@ public class ProjectRepositoryTest {
     @Test
     public void createProjectTest(){
 
-        //Create new user
-        /*In case database gets cleared, creation of new user to avoid
-        /*referencing non-existing user.
-        /*Tests should be independent of each other.*/
-        User user = new User();
-        user.setUsername("username2");
-        user.setPassword("password2");
-        user.setFirstName("firstName2");
-        user.setLastName("lastName2");
-        user.setEmail("email2");
-        user.setPhone("12345678910");
-        user.setTimeCreated(LocalDateTime.now());
-        user.setTimeUpdated(LocalDateTime.now());
-
-        User userTest = userRepository.save(user);
-
-        boolean IsUserExists = userRepository.existsById(userTest.getUserId());
-
-        Assert.assertNotNull(userTest);
-        Assert.assertTrue(IsUserExists);
-        Assert.assertEquals(user, userTest);
+        //Existing user
+        Integer userId = 2;
+        User user = userRepository.getOne(userId);
 
         //Create new project
         Project project = new Project();
         project.setProjectName("Project 1");
-        project.setUser(userTest);
+        project.setUser(user);
         project.setTimeCreated(LocalDateTime.now());
         project.setTimeUpdated(LocalDateTime.now());
 
@@ -88,8 +71,8 @@ public class ProjectRepositoryTest {
     //Delete Project
     @Test
     public void deleteProjectByIdTest(){
+
         Integer projectId= 1;
-        Project expected = projectRepository.getOne(projectId);
 
         projectRepository.deleteById(projectId);
 
