@@ -1,6 +1,5 @@
 package com.GroupProject.demo.Repository;
 
-import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.Resource;
 import org.junit.Assert;
 import org.junit.Test;
@@ -64,8 +63,8 @@ public class ResourceRepositoryTest {
     //Delete Resource
     @Test
     public void deleteResourceByIdTest(){
+
         Integer resourceId= 1;
-        Resource expected = resourceRepository.getOne(resourceId);
 
         resourceRepository.deleteById(resourceId);
 
