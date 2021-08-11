@@ -40,11 +40,24 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name="roles")
-    private Roles ROLES;
+    private Roles ROLES = Roles.USER;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="user", cascade= CascadeType.ALL)
     private List<Project> projects;
 
+    public User() {
+    }
+
+    public User(String username, String password, String firstName, String lastName, String email, String phone, LocalDateTime timeCreated, LocalDateTime timeUpdated) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.timeCreated = timeCreated;
+        this.timeUpdated = timeUpdated;
+    }
 
     public Integer getUserId() {
         return userId;
