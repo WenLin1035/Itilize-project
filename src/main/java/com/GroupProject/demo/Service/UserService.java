@@ -19,7 +19,7 @@ public interface UserService {
 
     List<User> findallUsers();
 
-    void saveUser(User user);
+    User saveUser(User user);
 
     void deletebyuser(User user);
 }

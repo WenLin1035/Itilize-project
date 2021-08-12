@@ -4,14 +4,21 @@ import com.GroupProject.demo.Entity.User;
 import com.GroupProject.demo.Repository.UserRepository;
 import com.GroupProject.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User findbyid(Integer id) {
@@ -50,8 +57,9 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
 
     @Override
