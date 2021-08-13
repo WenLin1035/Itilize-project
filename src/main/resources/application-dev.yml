@@ -14,3 +14,7 @@ spring:
       hibernate:
         format_sql: true
         enable_lazy_load_no_trans: true
+
+server:
+  servlet:
+    context-path: /KoreraItlize

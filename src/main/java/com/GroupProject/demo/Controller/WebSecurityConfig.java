@@ -58,14 +58,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Cross-origin-resource-sharing
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers("/authenticate").permitAll()// Allow authenticate method accessed without logging in
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()// others need to be accessed after authentication
+                .antMatchers("/user/authenticate").permitAll()// Allow authenticate method accessed without logging in
+                .antMatchers("/user/createuser").permitAll()
+                .antMatchers("/user/CostManager/**").hasRole("CostManager")
+                .anyRequest().fullyAuthenticated()// others need to be accessed after authentication
                 .and()
                 .logout().permitAll()
                 // redirect to the login page
-                .logoutRequestMatcher(new AntPathRequestMatcher("Users/logout","POST"))
-                .and().formLogin().loginPage("/users/login").and()
+                .logoutRequestMatcher(new AntPathRequestMatcher("user/logout","POST"))
+                .and().formLogin().loginPage("/user/authenticate").and()
                 .exceptionHandling().and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -23,10 +23,7 @@ public class usercontrollertest {
         System.out.println(userController.getallusers());
     }
 
-    @Test
-    public void getuserbyidTest(){
-        System.out.println(userController.getuserbyid(8));
-    }
+
 
     @org.junit.jupiter.api.Test
     public void registertest(){

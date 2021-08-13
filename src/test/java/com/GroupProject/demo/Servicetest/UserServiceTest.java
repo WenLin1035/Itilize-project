@@ -40,8 +40,9 @@ public class UserServiceTest {
 
     @Test
     public void updatebyuseridTest(){
-        User col = userservices.findbyusername("brian");
-        col.setRole(Role.User);
+        User col = userservices.findbyusername("dan");
+        col.setRole(Role.CostManager);
+        col.setPassword("12344456");
         userservices.saveUser(col);
     }
 

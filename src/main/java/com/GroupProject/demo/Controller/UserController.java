@@ -78,8 +78,10 @@ public class UserController {
     }
 
     //sign in
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody User User) throws Exception {
+    @GetMapping( "/authenticate")
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody User User )  throws Exception {
+
+
 
         try {
             myauthenticaitonManager.authenticate(
@@ -94,9 +96,11 @@ public class UserController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(User.getUser_name());
 
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
+        User user = service.findbyusername(User.getUser_name());
 
-        return  new ResponseEntity<>(User, HttpStatus.OK);
+        final String jwt = jwtTokenUtil.generateToken(userDetails);
+        //jwt gives token in postman switch with user to get user details
+        return  new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/register")
