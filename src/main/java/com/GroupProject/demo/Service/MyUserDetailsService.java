@@ -16,11 +16,11 @@ import java.util.HashSet;
 
 @Service
 @Transactional
-public class MyUserDetailService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public MyUserDetailService(UserRepository userRepository) {
+    public MyUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
