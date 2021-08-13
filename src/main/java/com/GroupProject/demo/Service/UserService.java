@@ -1,67 +1,29 @@
 package com.GroupProject.demo.Service;
 
+import com.GroupProject.demo.Entity.Enums.Roles;
 import com.GroupProject.demo.Entity.User;
-import com.GroupProject.demo.Repository.UserRepository;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.NoSuchElementException;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    private final UserRepository userRepository;
+    boolean usernameExists(String username); // Check if username exists
+    boolean userIdExists(Integer userId); // Checking if user id exists
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    User createUser(User user); // Create user
 
-    //Checking if user exists by Id
-    public boolean userExistsById(Integer userId){
-        return userRepository.existsById(userId);
-    }
+    void setUserRole(String username, Roles role); //Assign role to user
 
-    //Create user
-    public User createUser(User user) {
+    User findUserByUsername(String username); // Find user by username
+    User findUserById(Integer userId); // Find user by id
+    List<User> getAlUsers(); // Get all users
 
-        if (!userExistsById(user.getUserId())) {
-            user = new User(user.getUsername(), user.getPassword(), user.getFirstName(),
-                    user.getLastName(), user.getEmail(), user.getPhone(),
-                    LocalDateTime.now(), LocalDateTime.now());
-        }else{
-            throw new IllegalArgumentException("Username already exists!");
-        }
+    void updateUsername(User user, String username); //Update username
+    void updateEmail(User user, String email); //Update email
 
-        return userRepository.save(user);
-    }
-
-    //Find user by id
-    public User findUserById(Integer userId){
-        return  userRepository.findById(userId)
-                .orElseThrow(()->new NoSuchElementException("User does not exits!"));
-    }
-    //Get all users
-    List<User> getAlUsers(){
-        return userRepository.findAll();
-    }
-
-    //Delete user
-    public void deleteUser(User user){
-        userRepository.delete(user);
-    }
-    //Delete user by id
-    public void deleteUserById(Integer userId){
-        userRepository.deleteById(userId);
-    }
-    //Delete all users
-    public void deleteAllUsers(User user){
-        userRepository.deleteAll();
-    }
-
-
-
-
-
+    void deleteUserByUsername(String username); // Delete user by username
+    void deleteUserById(Integer userId); //Delete user by id
+    void deleteUser(User user); //Delete user
+    void deleteAllUsers(User user); //Delete all users
 
 }
