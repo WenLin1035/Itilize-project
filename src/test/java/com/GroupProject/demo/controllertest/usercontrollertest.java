@@ -3,6 +3,8 @@ package com.GroupProject.demo.controllertest;
 import com.GroupProject.demo.Controller.UserController;
 import com.GroupProject.demo.Entity.ColumnType;
 import com.GroupProject.demo.Entity.Columns;
+import com.GroupProject.demo.Entity.Role;
+import com.GroupProject.demo.Entity.User;
 import com.GroupProject.demo.Repository.ColumnsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,5 +26,18 @@ public class usercontrollertest {
     @Test
     public void getuserbyidTest(){
         System.out.println(userController.getuserbyid(8));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void registertest(){
+        User col = new User();
+        col.setUser_name("dan");
+        col.setPassword("12344456");
+        col.setEmail("dan@gmail.com");
+        col.setFirst_name("dan");
+        col.setLast_name("gg");
+        col.setPhone(1266633);
+        col.setRole(Role.User);
+        userController.register(col);
     }
 }

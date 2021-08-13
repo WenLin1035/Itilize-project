@@ -1,10 +1,11 @@
 package com.GroupProject.demo.Servicetest;
 
 import com.GroupProject.demo.Entity.Project;
+import com.GroupProject.demo.Entity.Role;
 import com.GroupProject.demo.Entity.User;
 import com.GroupProject.demo.Service.ProjectService;
-import com.GroupProject.demo.Service.UserDetailService;
 import com.GroupProject.demo.Service.UserService;
+import com.GroupProject.demo.Service.impl.UserDetailServiceImp;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserServiceTest {
     ProjectService projectService;
 
     @Autowired
-    UserDetailService userDetailService;
+    UserDetailServiceImp userDetailService;
 
     @Test
     public void saveTest(){
@@ -33,14 +34,14 @@ public class UserServiceTest {
         col.setFirst_name("Brian");
         col.setLast_name("ki");
         col.setPhone(1266667);
+        col.setRole(Role.User);
         userservices.saveUser(col);
     }
 
     @Test
     public void updatebyuseridTest(){
-        User col = userservices.findbyid(8);
-        Project pro = projectService.findbyid(4);
-        col.addproject(pro);
+        User col = userservices.findbyusername("brian");
+        col.setRole(Role.User);
         userservices.saveUser(col);
     }
 
@@ -53,7 +54,9 @@ public class UserServiceTest {
 
     @Test
     public void authenticatetest(){
-        UserDetails test = userDetailService.loadUserByUsername("mason");
+        UserDetails test = userDetailService.loadUserByUsername("brian");
         System.out.println(test);
     }
+
+
 }
