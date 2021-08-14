@@ -8,6 +8,7 @@ import com.GroupProject.demo.Service.ColumnsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Service
@@ -18,6 +19,8 @@ public class ColumnsServiceImp implements ColumnsService {
 
     @Override
     public void savecolumn(Columns col) {
+        col.setCreatedata(LocalDate.now());
+        col.setLastupdate(LocalDate.now());
         repository.save(col);
     }
 
@@ -57,11 +60,13 @@ public class ColumnsServiceImp implements ColumnsService {
 
     @Override
     public void updatecolumncontent(Columns col) {
+        col.setLastupdate(LocalDate.now());
         repository.save(col);
     }
 
     @Override
     public void updatecolumntype(Columns col) {
+        col.setLastupdate(LocalDate.now());
         repository.save(col);
     }
 

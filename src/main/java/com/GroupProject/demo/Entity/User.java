@@ -162,6 +162,13 @@ public class User implements Serializable {
         projectCollection.add(temp);
     }
 
+    public String printProjectIds(){
+        for(Project temp:projectCollection){
+            System.out.print(temp.getId() + ", ");
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -175,7 +182,7 @@ public class User implements Serializable {
                 ", timeCreated=" + timecreated +
                 ", timeUpdated=" + timeupdated +
                 ", ROLES=" + role +
-                ", projects=" + projectCollection +
+                ", projects=" + printProjectIds() +
                 '}';
     }
 }

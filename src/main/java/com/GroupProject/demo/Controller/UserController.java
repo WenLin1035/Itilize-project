@@ -38,7 +38,7 @@ public class UserController {
         return service.findallUsers();
     }
 
-    @PostMapping("/createuser")
+    @PutMapping("/createuser")
     public void createuser(@RequestParam("user_name") String name,
                            @RequestParam("password") String pass,
                            @RequestParam("first_name") String fname,
@@ -57,16 +57,6 @@ public class UserController {
         service.saveUser(user);
     }
 
-    @GetMapping("/getuserbyuserandpass")
-    public User getuserbyusernameandpassword(@RequestParam("user_name") String name,
-                                             @RequestParam("password") String pass){
-        User user = service.findbyusername(name);
-        if(user.getPassword().equals(pass)){
-            return user;
-        }else
-            return null;
-    }
-
     @GetMapping("/getuserbyid")
     public User getuserbyid(@RequestParam("user_id") Integer id){
         return service.findbyid(id);
@@ -75,6 +65,13 @@ public class UserController {
     @GetMapping("/getuserbyuser")
     public User getuserbyusername(@RequestParam("user_name") String name){
         return service.findbyusername(name);
+    }
+
+    @PutMapping("/addprojecttouser")
+    public User addprojecttouser(@RequestParam("user_id") Integer id,
+                                 @RequestParam("pid") Integer pid){
+        service.addProjectToUser(id,pid);
+        return service.findbyid(id);
     }
 
     //sign in
@@ -100,10 +97,10 @@ public class UserController {
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         //jwt gives token in postman switch with user to get user details
-        return  new ResponseEntity<>(user, HttpStatus.OK);
+        return  new ResponseEntity<>(jwt, HttpStatus.OK);
     }
 
-    @PostMapping("/register")
+    @PutMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         if (service.findbyusername(user.getUser_name()) != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

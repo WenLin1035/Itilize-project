@@ -18,7 +18,7 @@ public class ColumnController {
     @Autowired
     private ColumnsService service;
 
-    @PostMapping("/createcolumns")
+    @PutMapping("/createcolumns")
     public void createcolumn(@RequestParam("columnName") String name,
                              @RequestParam("col_type")ColumnType type){
         Columns col = new Columns();
@@ -46,7 +46,7 @@ public class ColumnController {
         return col;
     }
     
-    @PutMapping("/deletecolumns")
+    @PutMapping("/deletecolumn")
     public void deletecolumn(@RequestParam("columnid") Integer id){
         service.deleteonecolumn(service.findbyid(id));
     }

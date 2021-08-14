@@ -18,7 +18,7 @@ public class ResourceController {
     @Autowired
     private ResourceService service;
 
-    @PostMapping("/createresource")
+    @PutMapping("/createresource")
     public void createresource(@RequestParam("name") String name,
                                @RequestParam("rcode") Integer rcode){
         Resource resource = new Resource();

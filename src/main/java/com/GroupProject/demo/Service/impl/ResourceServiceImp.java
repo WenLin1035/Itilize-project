@@ -6,6 +6,7 @@ import com.GroupProject.demo.Service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class ResourceServiceImp implements ResourceService {
@@ -15,6 +16,8 @@ public class ResourceServiceImp implements ResourceService {
 
     @Override
     public void saveresource(Resource resource) {
+        resource.setTimecreated(LocalDate.now());
+        resource.setTimeupdated(LocalDate.now());
         repository.save(resource);
     }
 
@@ -47,11 +50,13 @@ public class ResourceServiceImp implements ResourceService {
 
     @Override
     public void updateresourcename(Resource resource) {
+        resource.setTimeupdated(LocalDate.now());
         repository.save(resource);
     }
 
     @Override
     public void updateresourcecode(Resource resource) {
+        resource.setTimeupdated(LocalDate.now());
         repository.save(resource);
     }
 

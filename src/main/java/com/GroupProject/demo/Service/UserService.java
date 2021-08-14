@@ -22,4 +22,6 @@ public interface UserService {
     User saveUser(User user);
 
     void deletebyuser(User user);
+
+    User addProjectToUser(Integer id, Integer pid);
 }

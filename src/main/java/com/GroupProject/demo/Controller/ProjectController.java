@@ -20,7 +20,7 @@ public class ProjectController {
     @Autowired
     private ProjectResourceService prservice;
 
-    @PostMapping("/createproject")
+    @PutMapping("/createproject")
     public void createproject(@RequestParam("project_name") String name){
         Project project = new Project();
         project.setName(name);

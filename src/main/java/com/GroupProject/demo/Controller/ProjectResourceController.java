@@ -17,7 +17,7 @@ public class ProjectResourceController {
     @Autowired
     private ProjectResourceService service;
 
-    @PostMapping("/createprojectresource")
+    @PutMapping("/createprojectresource")
     public void createprojectresource(@RequestParam("project_id") Project project,
                                       @RequestParam("rid") Resource resource){
         service.addresourcetoproject(project, resource);

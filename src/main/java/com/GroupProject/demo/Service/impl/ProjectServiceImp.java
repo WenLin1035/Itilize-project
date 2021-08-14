@@ -7,6 +7,7 @@ import com.GroupProject.demo.Service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,8 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public void saveproject(Project project) {
+        project.setCreatetime(LocalDate.now());
+        project.setUpdatetime(LocalDate.now());
         projectRepository.save(project);
     }
 
@@ -56,6 +59,7 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public void updateprojectname(Project project) {
+        project.setUpdatetime(LocalDate.now());
         projectRepository.save(project);
     }
 
