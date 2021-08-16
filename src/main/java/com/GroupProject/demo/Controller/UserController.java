@@ -47,7 +47,7 @@ public class UserController {
                            @RequestParam("phone") Integer phone,
                            @RequestParam("role") Role role){
         User user = new User();
-        user.setUser_name(name);
+        user.setUsername(name);
         user.setPassword(pass);
         user.setFirst_name(fname);
         user.setLast_name(lname);
@@ -56,20 +56,20 @@ public class UserController {
         user.setRole(role);
         service.saveUser(user);
     }
-
     @GetMapping("/getuserbyid")
-    public User getuserbyid(@RequestParam("user_id") Integer id){
+    public User getuserbyid(@RequestBody Integer id){
         return service.findbyid(id);
     }
 
     @GetMapping("/getuserbyuser")
-    public User getuserbyusername(@RequestParam("user_name") String name){
+    public User getuserbyusername(@RequestParam String name){
+        System.out.println(service.findbyusername(name).getUsername());
         return service.findbyusername(name);
     }
 
     @PutMapping("/addprojecttouser")
-    public User addprojecttouser(@RequestParam("user_id") Integer id,
-                                 @RequestParam("pid") Integer pid){
+    public User addprojecttouser(@RequestBody Integer id,
+                                 @RequestBody Integer pid){
         service.addProjectToUser(id,pid);
         return service.findbyid(id);
     }
@@ -82,7 +82,7 @@ public class UserController {
 
         try {
             myauthenticaitonManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(User.getUser_name(), User.getPassword())
+                    new UsernamePasswordAuthenticationToken(User.getUsername(), User.getPassword())
             );
         }
         catch (BadCredentialsException e) {
@@ -91,9 +91,9 @@ public class UserController {
 
 
         final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(User.getUser_name());
+                .loadUserByUsername(User.getUsername());
 
-        User user = service.findbyusername(User.getUser_name());
+        User user = service.findbyusername(User.getUsername());
 
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         //jwt gives token in postman switch with user to get user details
@@ -102,7 +102,7 @@ public class UserController {
 
     @PutMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        if (service.findbyusername(user.getUser_name()) != null) {
+        if (service.findbyusername(user.getUsername()) != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         user.setRole(Role.User);

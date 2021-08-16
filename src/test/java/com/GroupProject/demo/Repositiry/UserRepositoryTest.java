@@ -39,7 +39,7 @@ public class UserRepositoryTest{
     @Test
     public void saveTest(){
         User col = new User();
-        col.setUser_name("brian");
+        col.setUsername("brian");
         col.setPassword("12344456");
         col.setEmail("brian@gmail.com");
         col.setFirst_name("Brian");

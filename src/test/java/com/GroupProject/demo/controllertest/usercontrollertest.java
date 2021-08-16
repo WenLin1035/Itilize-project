@@ -20,7 +20,7 @@ public class usercontrollertest {
 
     @Test
     public void saveTest(){
-        System.out.println(userController.getallusers());
+        System.out.println(userController.getuserbyusername("brian"));
     }
 
 
@@ -28,7 +28,7 @@ public class usercontrollertest {
     @org.junit.jupiter.api.Test
     public void registertest(){
         User col = new User();
-        col.setUser_name("dan");
+        col.setUsername("dan");
         col.setPassword("12344456");
         col.setEmail("dan@gmail.com");
         col.setFirst_name("dan");

@@ -4,22 +4,26 @@ import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.User;
 import com.GroupProject.demo.Repository.ProjectRepository;
 import com.GroupProject.demo.Repository.UserRepository;
-import com.GroupProject.demo.Service.ProjectService;
 import com.GroupProject.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
-public class UserServiceImp implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserDetailServiceImp service;
 
     @Autowired
     private ProjectRepository passRespository;
@@ -34,13 +38,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User findbyusername(String username) {
-        List<User> users = userRepository.findAll();
-        for(User temp:users){
-            if(temp.getUser_name().equals(username)){
-                return temp;
-            }
-        }
-        return null;
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -60,7 +58,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<User> findallUsers() {
-        return userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
