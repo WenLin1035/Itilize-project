@@ -36,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project findbyname(String name) {
         List<Project> projects = projectRepository.findAll();
         for(Project temp: projects){
-            if((temp.getName()).equals(name)){
+            if(temp.getName().equals(name)){
                 return temp;
             }
         }
