@@ -3,6 +3,7 @@ package com.GroupProject.demo.controllertest;
 import com.GroupProject.demo.Controller.ColumnController;
 import com.GroupProject.demo.Controller.ProjectController;
 import com.GroupProject.demo.Entity.ColumnType;
+import com.GroupProject.demo.Entity.Columns;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class columncontrollertest {
 
     @Test
     public void getprojectbyidTest(){
-        System.out.println(projectController.getcolumnbyid(7));
+        projectController.updatecolumncontext(12,"controller test");
+        System.out.println(projectController.getcolumnbyid(12));
     }
 }

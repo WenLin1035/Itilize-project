@@ -19,6 +19,7 @@ public class ColumnRepository {
         Columns col = new Columns();
         col.setColumnName("column1");
         col.setColumnType(ColumnType.TEXT);
+        col.setContext("TESTING");
         Columns test = columnRepository.save(col);
         System.out.println(test);
     }

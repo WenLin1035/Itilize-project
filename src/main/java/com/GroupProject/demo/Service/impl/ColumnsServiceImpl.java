@@ -77,4 +77,9 @@ public class ColumnsServiceImpl implements ColumnsService {
     public void deleteonecolumn(Columns col) {
         repository.delete(col);
     }
+
+    @Override
+    public void updateColumnContext(Columns col) {
+        repository.save(col);
+    }
 }

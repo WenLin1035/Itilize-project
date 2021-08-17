@@ -21,6 +21,8 @@ public class Columns {
     @Enumerated(EnumType.STRING)
     @Column(name = "col_type")
     private ColumnType columnType;
+    @Column(name="context")
+    private String context;
     @CreatedDate
     @Column(name = "timecreated")
     private LocalDate createdate;
@@ -35,6 +37,14 @@ public class Columns {
     public String toString(){
         return "columnid: " + columnid + " / column name: " + columnName + " / column type: "
                 + columnType + " / rid: " + resources;
+    }
+
+    public String getContext(){
+        return context;
+    }
+
+    public void setContext(String context){
+        this.context = context;
     }
 
     public Integer getColumnid() {

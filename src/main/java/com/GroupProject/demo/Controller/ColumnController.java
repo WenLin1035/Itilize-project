@@ -47,6 +47,16 @@ public class ColumnController {
         service.updatecolumncontent(col);
         return col;
     }
+
+    @PutMapping("/updatecolumncontext")
+    public Columns updatecolumncontext(@RequestParam("columnid") Integer id,
+                                       @RequestParam("context") String context){
+        Columns col = service.findbyid(id);
+        col.setContext(context);
+        service.updateColumnContext(col);
+        return col;
+    }
+
     
     @PutMapping("/deletecolumn")
     public void deletecolumn(@RequestParam("columnid") Integer id){

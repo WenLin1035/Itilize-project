@@ -24,4 +24,6 @@ public interface ColumnsService {
     void updatecolumntype(Columns col);
 
     void deleteonecolumn(Columns col);
+
+    void updateColumnContext(Columns col);
 }
