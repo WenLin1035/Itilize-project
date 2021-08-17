@@ -1,7 +1,7 @@
 package com.GroupProject.demo.Controller;
 
 import com.GroupProject.demo.Filter.JwtRequestFilter;
-import com.GroupProject.demo.Service.impl.UserDetailServiceImp;
+import com.GroupProject.demo.Service.impl.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,11 +16,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+/*
+    @Author: Wen Lin
+*/
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserDetailServiceImp myUserDetailsService;
+    private UserDetailServiceImpl myUserDetailsService;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;

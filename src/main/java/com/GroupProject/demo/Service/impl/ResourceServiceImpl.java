@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+/*
+    @Author: Wen Lin
+*/
 @Service
-public class ResourceServiceImp implements ResourceService {
+public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
     ResourceRepository repository;

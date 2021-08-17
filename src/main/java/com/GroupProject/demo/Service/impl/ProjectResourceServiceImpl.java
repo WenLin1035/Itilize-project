@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+/*
+    @Author: Wen Lin
+*/
 @Service
-public class ProjectResourceServiceImp implements ProjectResourceService {
+public class ProjectResourceServiceImpl implements ProjectResourceService {
 
     @Autowired
     ProjectResourceRepository repository;

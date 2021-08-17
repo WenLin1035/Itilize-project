@@ -4,7 +4,9 @@ import com.GroupProject.demo.Entity.User;
 
 import java.util.List;
 import java.util.Optional;
-
+/*
+    @Author: Wen Lin
+*/
 public interface UserService {
     User findbyid(Integer id);
 

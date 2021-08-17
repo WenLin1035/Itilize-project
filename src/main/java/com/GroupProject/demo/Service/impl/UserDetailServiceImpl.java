@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
-
+/*
+    @Author: Wen Lin
+*/
 @Service
-public class UserDetailServiceImp implements UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;

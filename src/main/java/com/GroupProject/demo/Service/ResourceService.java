@@ -3,7 +3,9 @@ package com.GroupProject.demo.Service;
 import com.GroupProject.demo.Entity.Resource;
 
 import java.util.List;
-
+/*
+    @Author: Wen Lin
+*/
 public interface ResourceService {
     void saveresource(Resource resource);
 

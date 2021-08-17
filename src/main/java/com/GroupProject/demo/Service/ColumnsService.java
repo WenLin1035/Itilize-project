@@ -5,7 +5,9 @@ import com.GroupProject.demo.Entity.Columns;
 import com.GroupProject.demo.Entity.Resource;
 
 import java.util.List;
-
+/*
+    @Author: Wen Lin
+*/
 public interface ColumnsService {
     void savecolumn(Columns col);
 

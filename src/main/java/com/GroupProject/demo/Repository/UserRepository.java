@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
+/*
+    @Author: Wen Lin
+*/
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     //@Query("select s from User s where s.username = :user_name")

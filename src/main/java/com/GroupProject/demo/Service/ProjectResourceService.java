@@ -5,7 +5,9 @@ import com.GroupProject.demo.Entity.ProjectResource;
 import com.GroupProject.demo.Entity.Resource;
 
 import java.util.List;
-
+/*
+    @Author: Wen Lin
+*/
 public interface ProjectResourceService {
     ProjectResource findbyid(Integer id);
 

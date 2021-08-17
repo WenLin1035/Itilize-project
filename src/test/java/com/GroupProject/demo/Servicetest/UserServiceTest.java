@@ -1,11 +1,10 @@
 package com.GroupProject.demo.Servicetest;
 
-import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.Role;
 import com.GroupProject.demo.Entity.User;
 import com.GroupProject.demo.Service.ProjectService;
 import com.GroupProject.demo.Service.UserService;
-import com.GroupProject.demo.Service.impl.UserDetailServiceImp;
+import com.GroupProject.demo.Service.impl.UserDetailServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class UserServiceTest {
     ProjectService projectService;
 
     @Autowired
-    UserDetailServiceImp userDetailService;
+    UserDetailServiceImpl userDetailService;
 
     @Test
     public void saveTest(){

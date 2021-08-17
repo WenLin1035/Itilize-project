@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+/*
+    @Author: Wen Lin
+*/
 @Service
-public class ColumnsServiceImp implements ColumnsService {
+public class ColumnsServiceImpl implements ColumnsService {
 
     @Autowired
     ColumnsRepository repository;

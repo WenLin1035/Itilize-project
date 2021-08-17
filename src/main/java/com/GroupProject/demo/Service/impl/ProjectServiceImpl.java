@@ -11,8 +11,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+/*
+    @Author: Wen Lin
+*/
 @Service
-public class ProjectServiceImp implements ProjectService {
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;

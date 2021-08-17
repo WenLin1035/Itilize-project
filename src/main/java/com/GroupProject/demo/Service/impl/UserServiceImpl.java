@@ -6,15 +6,16 @@ import com.GroupProject.demo.Repository.ProjectRepository;
 import com.GroupProject.demo.Repository.UserRepository;
 import com.GroupProject.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
+/*
+    @Author: Wen Lin
+*/
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserDetailServiceImp service;
+    private UserDetailServiceImpl service;
 
     @Autowired
     private ProjectRepository passRespository;

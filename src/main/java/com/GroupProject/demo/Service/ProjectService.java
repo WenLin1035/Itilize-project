@@ -4,7 +4,9 @@ import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.User;
 
 import java.util.List;
-
+/*
+    @Author: Wen Lin
+*/
 public interface ProjectService {
     void saveproject(Project project);
 
