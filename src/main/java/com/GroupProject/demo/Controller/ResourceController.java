@@ -3,6 +3,7 @@ package com.GroupProject.demo.Controller;
 import com.GroupProject.demo.Entity.Columns;
 import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.Resource;
+import com.GroupProject.demo.Service.ColumnsService;
 import com.GroupProject.demo.Service.ProjectResourceService;
 import com.GroupProject.demo.Service.ProjectService;
 import com.GroupProject.demo.Service.ResourceService;
@@ -19,6 +20,9 @@ public class ResourceController {
 
     @Autowired
     private ResourceService service;
+
+    @Autowired
+    private ColumnsService cservice;
 
     @PutMapping("/createresource")
     public void createresource(@RequestParam("name") String name,
@@ -37,6 +41,18 @@ public class ResourceController {
     @GetMapping("/getallresources")
     public List<Resource> getallresource(){
         return service.findallresources();
+    }
+
+    @PutMapping("/addcolumntoresource")
+    public Resource addcolumntoresource(@RequestParam("rid") Integer id,
+                                        @RequestParam("columnid") Integer cid){
+        Resource resource = service.findbyid(id);
+        Columns col = cservice.findbyid(cid);
+        resource.add(col);
+        col.setResource(resource);
+        service.saveresource(resource);
+        cservice.savecolumn(col);
+        return service.findbyid(id);
     }
 
     @GetMapping("/getcolumnsinresource")

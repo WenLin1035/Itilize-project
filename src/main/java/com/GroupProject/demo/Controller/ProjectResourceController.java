@@ -3,6 +3,7 @@ package com.GroupProject.demo.Controller;
 import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.ProjectResource;
 import com.GroupProject.demo.Entity.Resource;
+import com.GroupProject.demo.Repository.ProjectResourceRepository;
 import com.GroupProject.demo.Service.ProjectResourceService;
 import com.GroupProject.demo.Service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,23 @@ public class ProjectResourceController {
     @Autowired
     private ProjectResourceService service;
 
+    @Autowired
+    private ProjectResourceRepository repository;
+
     @PutMapping("/createprojectresource")
     public void createprojectresource(@RequestParam("project_id") Project project,
                                       @RequestParam("rid") Resource resource){
-        service.addresourcetoproject(project, resource);
+        boolean exist = false;
+        List<ProjectResource> list = repository.findAll();
+        for(ProjectResource temp: list){
+            if(temp.getPid().equals(project) && temp.getRid().equals(resource)){
+                exist = true;
+            }
+        }
+        if(exist == false){
+            System.out.println("added");
+            service.addresourcetoproject(project, resource);
+        }
     }
 
     @GetMapping("/getprid")

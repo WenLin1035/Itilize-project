@@ -72,8 +72,8 @@ public class UserController {
     }
 
     @PutMapping("/addprojecttouser")
-    public User addprojecttouser(@RequestBody Integer id,
-                                 @RequestBody Integer pid){
+    public User addprojecttouser(@RequestParam Integer id,
+                                 @RequestParam Integer pid){
         service.addProjectToUser(id,pid);
         return service.findbyid(id);
     }
@@ -104,12 +104,12 @@ public class UserController {
         return  new ResponseEntity<>(jwt, HttpStatus.OK);
     }
 
-    @PutMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
-        if (service.findbyusername(user.getUsername()) != null) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-        user.setRole(Role.User);
-        return new ResponseEntity<>(service.saveUser(user), HttpStatus.CREATED);
-    }
+//    @PutMapping("/register")
+//    public ResponseEntity<?> register(@RequestBody User user) {
+//        if (service.findbyusername(user.getUsername()) != null) {
+//            return new ResponseEntity<>(HttpStatus.CONFLICT);
+//        }
+//        user.setRole(Role.User);
+//        return new ResponseEntity<>(service.saveUser(user), HttpStatus.CREATED);
+//    }
 }

@@ -35,6 +35,6 @@ public class usercontrollertest {
         col.setLast_name("gg");
         col.setPhone(1266633);
         col.setRole(Role.User);
-        userController.register(col);
+        //userController.register(col);
     }
 }
