@@ -4,19 +4,26 @@ package com.GroupProject.demo.Entity;
  */
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name="projectresource")
 public class ProjectResource {
+
     @Id
-    @GeneratedValue
-    @Column(name="pr_id",nullable = false,unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="pr_id")
     private Integer pr_id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+
+    @ManyToOne(cascade = CascadeType.DETACH,targetEntity = Project.class)
     @JoinColumn(name="project_id")
-    private Project pid;
+    private Project project;
+
+    @ManyToOne(targetEntity = Resource.class,cascade = {CascadeType.DETACH})
     @JoinColumn(name="rid")
-    private Integer rid;
+    private Resource resources;
+
+
 
     public Integer getPr_id() {
         return pr_id;
@@ -27,18 +34,18 @@ public class ProjectResource {
     }
 
     public Project getPid() {
-        return pid;
+        return project;
     }
 
     public void setPid(Project pid) {
-        this.pid = pid;
+        this.project = pid;
     }
 
-    public Integer getRid() {
-        return rid;
+    public Resource getRid() {
+        return resources;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setRid(Resource rid) {
+        this.resources = rid;
     }
 }

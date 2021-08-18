@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name="resource")
 public class Resource {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="rid")
     private Integer rid;
 
@@ -37,22 +37,42 @@ public class Resource {
     @Column(name="timeupdated")
     private LocalDate timeupdated;
 
-    @OneToMany(targetEntity = ProjectResource.class, cascade = CascadeType.ALL, mappedBy = "Resource")
-    @LazyCollection(LazyCollectionOption.TRUE)
-    private Collection<ProjectResource> projectResources;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
+    private List<ProjectResource> projectResources;
 
-    @OneToMany(targetEntity = Columns.class,cascade = CascadeType.ALL, mappedBy = "Resource", fetch = FetchType.LAZY)
-    private List<Columns> columnsList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
+    private List<Columns> columnsList;
 
     public Resource(){}
 
-    public Resource(String name, Integer rcode){
-        this.name = name;
-        this.rcode = rcode;
-//        this.prid = prid;
-//        this.columnid = columnid;
-        this.timecreated = LocalDate.now();
-        this.timeupdated = LocalDate.now();
+    @Override
+    public String toString(){
+        return "Resource id: " + rid + " , name: " + rcode;
+    }
+
+    public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
+        this.projectResources = projectCollection;
+    }
+
+    public void add(ProjectResource temp){
+        if(projectResources == null){
+            projectResources = new ArrayList<ProjectResource>();
+        }
+        projectResources.add(temp);
+    }
+
+    public List<Columns> getColumnsList(){
+        return columnsList;
+    }
+    public void setColumns(ArrayList<Columns> projectCollection) {
+        this.columnsList = projectCollection;
+    }
+
+    public void add(Columns temp){
+        if(columnsList == null){
+            columnsList = new ArrayList<Columns>();
+        }
+        columnsList.add(temp);
     }
 
     public void setRid(Integer rid) {

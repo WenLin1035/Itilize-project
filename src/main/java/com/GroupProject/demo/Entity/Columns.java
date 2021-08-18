@@ -1,6 +1,8 @@
 package com.GroupProject.demo.Entity;
 
-
+/*
+    @Author: Wen Lin
+*/
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -11,19 +13,39 @@ import java.time.LocalDate;
 @Table(name="columns")
 public class Columns {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="columnid")
     private Integer columnid;
+    @Column(name="columnName")
     private String columnName;
     @Enumerated(EnumType.STRING)
+    @Column(name = "col_type")
     private ColumnType columnType;
+    @Column(name="context")
+    private String context;
     @CreatedDate
-    private LocalDate createdata;
+    @Column(name = "timecreated")
+    private LocalDate createdate;
     @LastModifiedDate
+    @Column(name = "timeupdated")
     private LocalDate lastupdate;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="rid")
-    private Resource resource;
+    private Resource resources;
+
+    @Override
+    public String toString(){
+        return "columnid: " + columnid + " / column name: " + columnName + " / column type: "
+                + columnType + " / rid: " + resources;
+    }
+
+    public String getContext(){
+        return context;
+    }
+
+    public void setContext(String context){
+        this.context = context;
+    }
 
     public Integer getColumnid() {
         return columnid;
@@ -50,11 +72,11 @@ public class Columns {
     }
 
     public LocalDate getCreatedata() {
-        return createdata;
+        return createdate;
     }
 
     public void setCreatedata(LocalDate createdata) {
-        this.createdata = createdata;
+        this.createdate = createdata;
     }
 
     public LocalDate getLastupdate() {
@@ -66,10 +88,10 @@ public class Columns {
     }
 
     public Resource getResource() {
-        return resource;
+        return resources;
     }
 
     public void setResource(Resource resource) {
-        this.resource = resource;
+        this.resources = resource;
     }
 }

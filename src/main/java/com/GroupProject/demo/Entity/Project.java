@@ -7,7 +7,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -18,11 +19,11 @@ import java.util.Set;
 @Table(name="project")
 public class Project {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="project_id")
     private Integer id;
 
-    @Column(name="Project_name",nullable = false,unique = true)
+    @Column(name="project_name",nullable = false,unique = true)
     private String name;
 
     @CreatedDate
@@ -33,26 +34,32 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    @ManyToOne(targetEntity = User.class, cascade = {CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name="user_id")
-    private Integer user_id;
+    private User user;
 
-    @Column(name="pr_id")
-    private  Integer pr_id;
+//    @Column(name="pr_id")
+//    private Integer pr_id;
 
-    @OneToMany(targetEntity = ProjectResource.class,cascade = CascadeType.REMOVE,mappedBy = "project")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<ProjectResource> resources;
+    @OneToMany(cascade = CascadeType.DETACH,mappedBy = "project",fetch = FetchType.LAZY)
+    private List<ProjectResource> project;
 
     public Project(){}
 
-    public Project(Integer pid, String name, Integer uid, Integer pr_id){
-        id = pid;
-        this.name = name;
-        this.createtime = LocalDate.now();
-        this.updatetime = LocalDate.now();
-        user_id = uid;
-        this.pr_id = pr_id;
+    @Override
+    public String toString(){
+        return "Project Id: " + id + "/ Project name: " + name;
+    }
+
+    public void setProjectResources(ArrayList<ProjectResource> projectCollection) {
+        this.project = projectCollection;
+    }
+
+    public void add(ProjectResource temp){
+        if(project == null){
+            project = new ArrayList<ProjectResource>();
+        }
+        project.add(temp);
     }
 
     public Integer getId(){
@@ -87,20 +94,20 @@ public class Project {
         this.updatetime = updatetime;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public User getUser_id() {
+        return user;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUser_id(User user_id) {
+        this.user = user_id;
     }
 
-    public Integer getPr_id() {
-        return pr_id;
-    }
-
-    public void setPr_id(Integer pr_id) {
-        this.pr_id = pr_id;
-    }
+//    public Integer getPr_id() {
+//        return pr_id;
+//    }
+//
+//    public void setPr_id(Integer pr_id) {
+//        this.pr_id = pr_id;
+//    }
 
 }
