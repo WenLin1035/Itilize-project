@@ -48,15 +48,17 @@ public class UserController {
                            @RequestParam("email_address") String email,
                            @RequestParam("phone") Integer phone,
                            @RequestParam("role") Role role){
-        User user = new User();
-        user.setUsername(name);
-        user.setPassword(pass);
-        user.setFirst_name(fname);
-        user.setLast_name(lname);
-        user.setEmail(email);
-        user.setPhone(phone);
-        user.setRole(role);
-        service.saveUser(user);
+        if(service.findbyusername(name) == null){
+            User user = new User();
+            user.setUsername(name);
+            user.setPassword(pass);
+            user.setFirst_name(fname);
+            user.setLast_name(lname);
+            user.setEmail(email);
+            user.setPhone(phone);
+            user.setRole(role);
+            service.saveUser(user);
+        }
     }
     @GetMapping("/getuserbyid")
     public User getuserbyid(@RequestBody Integer id){
