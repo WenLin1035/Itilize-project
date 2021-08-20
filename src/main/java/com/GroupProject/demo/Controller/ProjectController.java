@@ -1,6 +1,7 @@
 package com.GroupProject.demo.Controller;
 
 import com.GroupProject.demo.Entity.*;
+import com.GroupProject.demo.Repository.ProjectResourceRepository;
 import com.GroupProject.demo.Service.ProjectResourceService;
 import com.GroupProject.demo.Service.ProjectService;
 import com.GroupProject.demo.Service.UserService;
@@ -21,6 +22,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectResourceService prservice;
+
+    @Autowired
+    private ProjectResourceRepository repository;
 
     @PutMapping("/createproject")
     public void createproject(@RequestParam("project_name") String name){
@@ -52,5 +56,41 @@ public class ProjectController {
     @PutMapping("/deleteproject")
     public void deleteproject(@RequestParam("project_id") Integer id){
         service.deletebyproject(service.findbyid(id));
+    }
+
+    @PutMapping("/createprojectresource")
+    public void createprojectresource(@RequestParam("project_id") Project project,
+                                      @RequestParam("rid") Resource resource){
+        boolean exist = false;
+        List<ProjectResource> list = repository.findAll();
+        for(ProjectResource temp: list){
+            if(temp.getPid().equals(project) && temp.getRid().equals(resource)){
+                exist = true;
+            }
+        }
+        if(exist == false){
+            System.out.println("added");
+            prservice.addresourcetoproject(project, resource);
+        }
+    }
+
+    @GetMapping("/getprid")
+    public ProjectResource getprojectresourcebyid(@RequestParam("pr_id") Integer id){
+        return prservice.findbyid(id);
+    }
+
+    @GetMapping("/getprojectbyprid")
+    public Project getprojectbyprid(@RequestParam("pr_id") Integer id){
+        return prservice.getprojectbyprid(id);
+    }
+
+    @GetMapping("/getresourcebyprid")
+    public Resource getresourcebyprid(@RequestParam("pr_id") Integer id){
+        return prservice.getresourcebyprid(id);
+    }
+
+    @PutMapping("/deleteprbyid")
+    public void deleteprojectresource(@RequestParam("pr_id") Integer id){
+        prservice.deleteoneprojectresource(prservice.findbyid(id));
     }
 }
