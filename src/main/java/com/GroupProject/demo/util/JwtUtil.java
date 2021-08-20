@@ -1,4 +1,4 @@
-package com.GroupProject.demo.Service;
+package com.GroupProject.demo.util;
 
 import com.GroupProject.demo.Entity.User;
 import io.jsonwebtoken.Claims;

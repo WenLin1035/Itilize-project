@@ -2,7 +2,7 @@ package com.GroupProject.demo.Controller;
 
 import com.GroupProject.demo.Entity.Role;
 import com.GroupProject.demo.Entity.User;
-import com.GroupProject.demo.Service.JwtUtil;
+import com.GroupProject.demo.util.JwtUtil;
 import com.GroupProject.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

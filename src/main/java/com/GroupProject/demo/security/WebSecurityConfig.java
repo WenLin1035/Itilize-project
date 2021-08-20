@@ -1,4 +1,4 @@
-package com.GroupProject.demo.Controller;
+package com.GroupProject.demo.security;
 
 import com.GroupProject.demo.Filter.JwtRequestFilter;
 import com.GroupProject.demo.Service.impl.UserDetailServiceImpl;
