@@ -19,6 +19,7 @@ import java.util.List;
     @Author: Wen Lin
 */
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/user")
 public class UserController {
 
@@ -40,13 +41,12 @@ public class UserController {
     }
 
     @PutMapping("/createuser")
-    public void createuser(@RequestParam("user_name") String name,
-                           @RequestParam("password") String pass,
-                           @RequestParam("first_name") String fname,
-                           @RequestParam("last_name") String lname,
-                           @RequestParam("email_address") String email,
-                           @RequestParam("phone") Integer phone,
-                           @RequestParam("role") Role role){
+    public void createuser(@RequestParam String name,
+                           @RequestParam String pass,
+                           @RequestParam String fname,
+                           @RequestParam String lname,
+                           @RequestParam String email,
+                           @RequestParam Integer phone){
         if(service.findbyusername(name) == null){
             User user = new User();
             user.setUsername(name);
@@ -55,16 +55,17 @@ public class UserController {
             user.setLast_name(lname);
             user.setEmail(email);
             user.setPhone(phone);
-            user.setRole(role);
+            user.setRole(Role.User);
             service.saveUser(user);
         }
     }
-    @GetMapping("/getuserbyid")
-    public User getuserbyid(@RequestBody Integer id){
+    @PostMapping("/getuserbyid")
+    public User getuserbyid(@RequestParam Integer id){
+
         return service.findbyid(id);
     }
 
-    @GetMapping("/getuserbyuser")
+    @PostMapping("/getuserbyuser")
     public User getuserbyusername(@RequestParam String name){
         System.out.println(service.findbyusername(name).getUsername());
         return service.findbyusername(name);
@@ -78,7 +79,7 @@ public class UserController {
     }
 
     //sign in
-    @GetMapping( "/authenticate")
+    @PostMapping( "/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody User User )  throws Exception {
 
 

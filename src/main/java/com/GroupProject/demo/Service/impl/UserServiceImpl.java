@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -84,4 +85,13 @@ public class UserServiceImpl implements UserService {
         user.setTimeupdated(LocalDate.now());
         return null;
     }
+
+    @Override
+    public User deleteProjectsFromUser(Integer id) {
+        ArrayList<Project> project = new ArrayList<Project>();
+        User user = userRepository.findById(id).orElse(null);
+        user.setProjectCollection(project);
+        return user;
+    }
+
 }

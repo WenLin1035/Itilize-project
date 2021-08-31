@@ -25,4 +25,6 @@ public interface UserService {
     void deletebyuser(User user);
 
     User addProjectToUser(Integer id, Integer pid);
+
+    User deleteProjectsFromUser(Integer id);
 }

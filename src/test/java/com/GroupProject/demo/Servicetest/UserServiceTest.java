@@ -48,8 +48,8 @@ public class UserServiceTest {
     @Test
     public void deletingTest(){
         //can't delete if user has a project
-        User user = userservices.findbyid(8);
-        userservices.deletebyuser(user);
+        User user = userservices.deleteProjectsFromUser(1);
+        System.out.println(user);
     }
 
     @Test
