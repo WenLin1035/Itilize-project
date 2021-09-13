@@ -18,7 +18,7 @@ public class columncontrollertest {
 
     @Test
     public void saveTest(){
-        projectController.createcolumn("controlcolumn1", ColumnType.TEXT);
+        projectController.createcolumn("controlcolumn1", ColumnType.TEXT, 1);
         System.out.println(projectController.getallcolumns());
     }
 

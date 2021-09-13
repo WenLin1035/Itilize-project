@@ -25,12 +25,13 @@ public class ResourceController {
     private ColumnsService cservice;
 
     @PutMapping("/createresource")
-    public void createresource(@RequestParam("name") String name,
+    public Resource createresource(@RequestParam("name") String name,
                                @RequestParam("rcode") Integer rcode){
         Resource resource = new Resource();
         resource.setname(name);
         resource.setrcode(rcode);
         service.saveresource(resource);
+        return service.findbyname(name);
     }
 
     @GetMapping("/getresourcebyid")
@@ -64,4 +65,14 @@ public class ResourceController {
     public void deleteresource(@RequestParam("rid") Integer id){
         service.deletebyresource(service.findbyid(id));
     }
+
+    @PutMapping("updateresource")
+    public Resource updateresouce(@RequestBody Resource res){
+        Resource temp = service.findbyid(res.getRid());
+        temp.setname(res.getname());
+        temp.setrcode(res.getrcode());
+        service.saveresource(temp);
+        return service.findbyid(temp.getRid());
+    }
 }
+

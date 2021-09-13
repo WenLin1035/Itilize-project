@@ -1,5 +1,6 @@
 package com.GroupProject.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.CreatedDate;
@@ -37,9 +38,11 @@ public class Resource {
     @Column(name="timeupdated")
     private LocalDate timeupdated;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
     private List<ProjectResource> projectResources;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resources", fetch = FetchType.LAZY)
     private List<Columns> columnsList;
 

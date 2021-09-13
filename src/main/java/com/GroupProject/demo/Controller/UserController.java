@@ -80,25 +80,19 @@ public class UserController {
 
     //sign in
     @PostMapping( "/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody User User )  throws Exception {
-
-
-
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody User user )  throws Exception {
+        System.out.println("THIS IS THE DATA ENTERED FROM FRONTEND: " + user.getUsername() + "  ,   password: " + user.getPassword());
         try {
             myauthenticaitonManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(User.getUsername(), User.getPassword())
+                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
             );
         }
         catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
-
-
         final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(User.getUsername());
-
-        User user = service.findbyusername(User.getUsername());
-
+                .loadUserByUsername(user.getUsername());
+        User user1 = service.findbyusername(user.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         //jwt gives token in postman switch with user to get user details
         return  new ResponseEntity<>(jwt, HttpStatus.OK);

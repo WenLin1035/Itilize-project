@@ -20,12 +20,17 @@ public class ColumnController {
     @Autowired
     private ColumnsService service;
 
+    @Autowired
+    private ResourceService rservice;
+
     @PutMapping("/createcolumns")
     public void createcolumn(@RequestParam("columnName") String name,
-                             @RequestParam("col_type")ColumnType type){
+                             @RequestParam("col_type")ColumnType type,
+                             @RequestParam Integer rid){
         Columns col = new Columns();
         col.setColumnName(name);
         col.setColumnType(type);
+        col.setResource(rservice.findbyid(rid));
         service.savecolumn(col);
     }
 
@@ -41,9 +46,9 @@ public class ColumnController {
 
     @PutMapping("/updatecolumnname")
     public Columns updatecolumnname(@RequestParam("columnid") Integer id,
-                                    @RequestParam("columnName") String name){
+                                    @RequestParam("context") String name){
         Columns col = service.findbyid(id);
-        col.setColumnName(name);
+        col.setContext(name);
         service.updatecolumncontent(col);
         return col;
     }

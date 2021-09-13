@@ -3,7 +3,9 @@ package com.GroupProject.demo.Service.impl;
 import com.GroupProject.demo.Entity.Project;
 import com.GroupProject.demo.Entity.ProjectResource;
 import com.GroupProject.demo.Entity.Resource;
+import com.GroupProject.demo.Repository.ProjectRepository;
 import com.GroupProject.demo.Repository.ProjectResourceRepository;
+import com.GroupProject.demo.Repository.ResourceRepository;
 import com.GroupProject.demo.Service.ProjectResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,13 @@ public class ProjectResourceServiceImpl implements ProjectResourceService {
     @Autowired
     ProjectResourceRepository repository;
 
+    @Autowired
+    ProjectRepository prepository;
+
+    @Autowired
+    ResourceRepository rrepository;
+
+
     @Override
     public ProjectResource findbyid(Integer id) {
         return repository.findById(id).orElse(null);
@@ -30,11 +39,15 @@ public class ProjectResourceServiceImpl implements ProjectResourceService {
     }
 
     @Override
-    public void addresourcetoproject(Project project, Resource resource) {
+    public void addresourcetoproject(Integer project, Integer resource) {
         ProjectResource pr = new ProjectResource();
-        pr.setPid(project);
-        pr.setRid(resource);
-        repository.save(pr);
+        Project temp = prepository.findById(project).orElse(null);
+        Resource temp1 = rrepository.findById(resource).orElse(null);
+        if(temp != null && temp1 != null){
+            pr.setPid(temp);
+            pr.setRid(temp1);
+            repository.save(pr);
+        }
     }
 
     @Override

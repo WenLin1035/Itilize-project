@@ -59,8 +59,8 @@ public class ProjectController {
     }
 
     @PutMapping("/createprojectresource")
-    public void createprojectresource(@RequestParam("project_id") Project project,
-                                      @RequestParam("rid") Resource resource){
+    public void createprojectresource(@RequestParam Integer project,
+                                      @RequestParam Integer resource){
         boolean exist = false;
         List<ProjectResource> list = repository.findAll();
         for(ProjectResource temp: list){

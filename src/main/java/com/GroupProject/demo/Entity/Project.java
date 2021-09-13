@@ -1,5 +1,6 @@
 package com.GroupProject.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.CreatedDate;
@@ -34,14 +35,14 @@ public class Project {
     @Column(name="updatetime")
     private LocalDate updatetime;
 
-    @ManyToOne(cascade = {CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = User.class)
     @JoinColumn(name="user_id")
     private User user;
 
 //    @Column(name="pr_id")
 //    private Integer pr_id;
-
-    @OneToMany(cascade = CascadeType.DETACH,mappedBy = "project",fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.DETACH,mappedBy = "project",fetch = FetchType.LAZY, targetEntity = ProjectResource.class)
     private List<ProjectResource> project;
 
     public Project(){}

@@ -1,5 +1,6 @@
 package com.GroupProject.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -54,8 +55,8 @@ public class User implements Serializable {
 
 //    @Column(name="project_id")
 //    private Integer project_id;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Project.class)
     private List<Project> projectCollection;
 
     public User() {

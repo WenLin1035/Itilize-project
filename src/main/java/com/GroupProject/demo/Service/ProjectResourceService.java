@@ -13,7 +13,7 @@ public interface ProjectResourceService {
 
     void saveprojectresource(ProjectResource pr);
 
-    void addresourcetoproject(Project project, Resource resource);
+    void addresourcetoproject(Integer project, Integer resource);
 
     Project getprojectbyprid(Integer prid);
 
